@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Perks - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/tailwindcss">
+      :root {
+        --luxury-green: #0b3d2c;
+        --soft-pink: #fadadd;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f9c806",
+              "luxury-green": "var(--luxury-green)",
+              "soft-pink": "var(--soft-pink)",
+              "background-light": "#f8f8f5",
+              "background-dark": "#1a1a1a",
+              "text-light": "#181711",
+              "text-dark": "#f8f8f5",
+              "muted-light": "#8c835f",
+              "muted-dark": "#a19b81",
+            },
+            fontFamily: {
+              display: ["Work Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark"
+  >
+    <div class="flex flex-col min-h-screen">
+      <header class="sticky top-0 z-10 bg-luxury-green shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 text-primary">
+                <svg
+                  fill="none"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 6H42L36 24L42 42H6L12 24L6 6Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </div>
+              <h1 class="text-2xl font-bold text-white">Perks</h1>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+              <a
+                class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                href="#"
+                >Home</a
+              >
+              <a
+                class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                href="#"
+                >Perks</a
+              >
+              <a
+                class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                href="#"
+                >Community</a
+              >
+              <a
+                class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                href="#"
+                >About</a
+              >
+            </nav>
+            <div class="flex items-center gap-4">
+              <button
+                class="bg-primary text-text-light font-bold text-sm py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Submit a Perk
+              </button>
+              <button
+                class="md:hidden p-2 rounded-lg text-white hover:bg-white/10"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 6h16M4 12h16m-7 6h7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="flex-grow">
+        <div class="bg-soft-pink text-text-light">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
+              Get in Touch
+            </h2>
+            <p class="mt-4 text-lg text-muted-light max-w-2xl mx-auto">
+              We're here to help! Whether you have questions, feedback, or need
+              assistance, we're all ears. Reach out to us using the form below
+              or drop us an email directly.
+            </p>
+          </div>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="max-w-3xl mx-auto">
+            <div
+              class="bg-white dark:bg-background-dark/80 p-8 rounded-xl shadow-lg border border-black/5 dark:border-white/5 backdrop-blur-sm"
+            >
+              <form class="space-y-6">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-text-light dark:text-text-dark mb-1"
+                    for="name"
+                    >Your Name</label
+                  >
+                  <input
+                    class="w-full bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-primary rounded-lg py-3 px-4 text-sm placeholder:text-muted-light dark:placeholder:text-muted-dark"
+                    id="name"
+                    name="name"
+                    placeholder="e.g., Jane Doe"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-sm font-medium text-text-light dark:text-text-dark mb-1"
+                    for="email"
+                    >Your Email</label
+                  >
+                  <input
+                    class="w-full bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-primary rounded-lg py-3 px-4 text-sm placeholder:text-muted-light dark:placeholder:text-muted-dark"
+                    id="email"
+                    name="email"
+                    placeholder="e.g., jane.doe@example.com"
+                    type="email"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-sm font-medium text-text-light dark:text-text-dark mb-1"
+                    for="subject"
+                    >Subject</label
+                  >
+                  <input
+                    class="w-full bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-primary rounded-lg py-3 px-4 text-sm placeholder:text-muted-light dark:placeholder:text-muted-dark"
+                    id="subject"
+                    name="subject"
+                    placeholder="What can we help you with?"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-sm font-medium text-text-light dark:text-text-dark mb-1"
+                    for="message"
+                    >Message</label
+                  >
+                  <textarea
+                    class="w-full bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-primary rounded-lg py-3 px-4 text-sm placeholder:text-muted-light dark:placeholder:text-muted-dark"
+                    id="message"
+                    name="message"
+                    placeholder="Your message here..."
+                    rows="5"
+                  ></textarea>
+                </div>
+                <div class="flex justify-end">
+                  <button
+                    class="bg-primary text-text-light font-bold text-sm py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full sm:w-auto"
+                    type="submit"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
+            <p
+              class="text-center mt-8 text-sm text-muted-light dark:text-muted-dark"
+            >
+              Alternatively, you can email us at
+              <a
+                class="font-medium text-primary hover:underline"
+                href="mailto:support@perks.com"
+                >support@perks.com</a
+              >
+            </p>
+          </div>
+        </div>
+      </main>
+      <footer class="bg-luxury-green text-white mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div class="flex justify-between items-center text-sm">
+            <p class="text-gray-300">© 2024 Perks. All rights reserved.</p>
+            <div class="flex gap-4">
+              <a class="hover:text-primary transition-colors" href="#"
+                >Twitter</a
+              >
+              <a class="hover:text-primary transition-colors" href="#"
+                >LinkedIn</a
+              >
+              <a class="hover:text-primary transition-colors" href="#"
+                >Instagram</a
+              >
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

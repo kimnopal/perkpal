@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Perks for Vendors</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f9c806",
+              "background-light": "#f8f8f5",
+              "background-dark": "#231f0f",
+              "luxury-green": "#014421",
+              "dark-cream": "#f5f5dc",
+            },
+            fontFamily: {
+              display: ["Work Sans"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+    <script
+      defer=""
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200"
+  >
+    <div
+      class="relative flex min-h-screen w-full flex-col"
+      x-data="{ modalOpen: false }"
+    >
+      <header
+        class="sticky top-0 z-20 w-full bg-luxury-green text-white backdrop-blur-sm"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-4">
+              <svg
+                class="h-8 w-8 text-white"
+                fill="none"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 6H42L36 24L42 42H6L12 24L6 6Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2 class="text-xl font-bold tracking-tight text-white">Perks</h2>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+              <a
+                class="text-sm font-medium text-gray-300 hover:text-primary"
+                href="#"
+                >Perks</a
+              >
+              <a
+                class="text-sm font-medium text-gray-300 hover:text-primary"
+                href="#"
+                >Community</a
+              >
+              <a
+                class="text-sm font-medium text-gray-300 hover:text-primary"
+                href="#"
+                >Learn</a
+              >
+              <a
+                class="text-sm font-medium text-gray-300 hover:text-primary"
+                href="#"
+                >Vendors</a
+              >
+            </nav>
+            <div class="flex items-center gap-4">
+              <button
+                @click="modalOpen = true"
+                class="bg-primary text-gray-900 font-bold text-sm py-2 px-4 rounded-lg hover:opacity-90 transition-opacity"
+              >
+                Get started
+              </button>
+              <div
+                class="h-10 w-10 rounded-full bg-cover bg-center"
+                style="
+                  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiM4UT25IVxDjF78Hilwu_zNSDwAPp-PbubAuQQTvA18PkjuKhQVYqLrW7P9EjaH3iHT-lygfYSxmxn7MjKXZfDJ_u1u6gu1jEQYTMYBUaQEA8vZD2jQkoWf7S7lDcjMZiMJfEBxQlC9OED7MIjX0vfQkMST3fv2ZkePF1Gg_2n4Y4Twbbkk9_Mav2wwrfsyXvXyw-cWR6iEAEfhaJSN6MUFG7qcrKTXXKbn5eeI7o4Y4__rqv-ubQ3cGSohAskmHfeWDmdm9CTRQF');
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="flex-grow">
+        <section class="relative">
+          <div
+            class="absolute inset-0 bg-cover bg-center"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDAEGgZARn4PNYu1pf0h9IJX5djkUESbj4_j-nsZzRc2_24CL7QItt2YtXKgDuzQ3tZ-hbYcZW0x6mz-ROO2MzTrSXXctL14vYc1GnKxz6UasUwn9F_pysE6Ir8GcHST-eiwuM0TibrPO51RDTTeXENWxTcxtPh_WYDrdBfmVBJwfv4mYaqgcep6fBpBiSiU5aQYlSQ9dZCHHEEHpv75DujmmwzQUgIN5n98CEhDwWeUckDYRT88c9TCZoc8wp4F9-FHHJSx1HsybKz');
+            "
+          ></div>
+          <div class="absolute inset-0 bg-black/60"></div>
+          <div
+            class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 text-center text-white"
+          >
+            <h1
+              class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter"
+            >
+              Reach your ideal customers
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg sm:text-xl text-gray-200">
+              Connect with a highly engaged community of founders, freelancers,
+              solopreneurs, and remote workers in Malaysia and Singapore.
+            </p>
+            <button
+              @click="modalOpen = true"
+              class="mt-8 bg-primary text-gray-900 font-bold text-base py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+            >
+              Get started
+            </button>
+          </div>
+        </section>
+        <section
+          class="py-16 sm:py-24 bg-background-light dark:bg-background-dark"
+        >
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
+              >
+                Why partner with us?
+              </h2>
+              <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+                Join our network of leading brands and gain access to a thriving
+                community of professionals.
+              </p>
+            </div>
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div
+                class="flex flex-col items-center text-center gap-4 bg-[#FFC0CB] dark:bg-pink-900/50 p-8 rounded-xl h-80 justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-gray-900 dark:text-white text-5xl"
+                  >group</span
+                >
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                  Reach your ideal customers
+                </h3>
+                <p class="text-base text-gray-700 dark:text-gray-300">
+                  Connect with a highly engaged community of founders,
+                  freelancers, solopreneurs, and remote workers in Malaysia and
+                  Singapore.
+                </p>
+              </div>
+              <div
+                class="flex flex-col items-center text-center gap-4 bg-[#FFFFE0] dark:bg-yellow-900/50 p-8 rounded-xl h-80 justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-gray-900 dark:text-white text-5xl"
+                  >visibility</span
+                >
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                  Boost your brand visibility
+                </h3>
+                <p class="text-base text-gray-700 dark:text-gray-300">
+                  Increase your brand awareness and reach a wider audience
+                  through our platform.
+                </p>
+              </div>
+              <div
+                class="flex flex-col items-center text-center gap-4 bg-[#E6E6FA] dark:bg-purple-900/50 p-8 rounded-xl h-80 justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-gray-900 dark:text-white text-5xl"
+                  >track_changes</span
+                >
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                  Generate high-quality leads
+                </h3>
+                <p class="text-base text-gray-700 dark:text-gray-300">
+                  Generate high-quality leads and drive conversions with
+                  targeted promotions and exclusive offers.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="py-16 sm:py-24 bg-white dark:bg-black/10">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
+              >
+                How it works
+              </h2>
+            </div>
+            <div class="mt-12 max-w-4xl mx-auto">
+              <div class="relative">
+                <div
+                  aria-hidden="true"
+                  class="absolute left-8 top-8 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"
+                ></div>
+                <div class="relative flex items-start gap-6">
+                  <div
+                    class="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center"
+                  >
+                    <span
+                      class="material-symbols-outlined text-gray-900"
+                      style="font-size: 32px"
+                      >edit</span
+                    >
+                  </div>
+                  <div class="pt-1.5">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                      Submit your offer
+                    </h3>
+                    <p class="mt-1 text-base text-gray-600 dark:text-gray-400">
+                      Share your exclusive offer with our community.
+                    </p>
+                  </div>
+                </div>
+                <div class="relative flex items-start gap-6 mt-8">
+                  <div
+                    class="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center"
+                  >
+                    <span
+                      class="material-symbols-outlined text-gray-900"
+                      style="font-size: 32px"
+                      >search</span
+                    >
+                  </div>
+                  <div class="pt-1.5">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                      We review and approve
+                    </h3>
+                    <p class="mt-1 text-base text-gray-600 dark:text-gray-400">
+                      Our team will review your offer and ensure it meets our
+                      quality standards.
+                    </p>
+                  </div>
+                </div>
+                <div class="relative flex items-start gap-6 mt-8">
+                  <div
+                    class="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center"
+                  >
+                    <span
+                      class="material-symbols-outlined text-gray-900"
+                      style="font-size: 32px"
+                      >rocket_launch</span
+                    >
+                  </div>
+                  <div class="pt-1.5">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                      Go live and start generating leads
+                    </h3>
+                    <p class="mt-1 text-base text-gray-600 dark:text-gray-400">
+                      Your offer will be live on our platform, and you can start
+                      generating leads.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="py-16 sm:py-24 bg-dark-cream dark:bg-gray-800"
+          x-data="{ openFaq: null }"
+        >
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
+              >
+                Frequently Asked Questions
+              </h2>
+            </div>
+            <div class="mt-12 max-w-3xl mx-auto space-y-4">
+              <div class="border-b border-gray-300 dark:border-gray-700 pb-4">
+                <button
+                  @click="openFaq === 1 ? openFaq = null : openFaq = 1"
+                  class="flex justify-between items-center w-full text-left"
+                >
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+                    What kind of businesses can partner with you?
+                  </h3>
+                  <span
+                    class="material-symbols-outlined text-gray-900 dark:text-white"
+                    x-text="openFaq === 1 ? 'remove' : 'add'"
+                  ></span>
+                </button>
+                <div x-cloak="" x-collapse="" x-show="openFaq === 1">
+                  <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+                    We partner with businesses that offer valuable products or
+                    services to founders, freelancers, solopreneurs, and remote
+                    workers in Malaysia and Singapore. This includes SaaS
+                    companies, co-working spaces, professional services, and
+                    more.
+                  </p>
+                </div>
+              </div>
+              <div class="border-b border-gray-300 dark:border-gray-700 pb-4">
+                <button
+                  @click="openFaq === 2 ? openFaq = null : openFaq = 2"
+                  class="flex justify-between items-center w-full text-left"
+                >
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+                    Is there a cost to list our perks?
+                  </h3>
+                  <span
+                    class="material-symbols-outlined text-gray-900 dark:text-white"
+                    x-text="openFaq === 2 ? 'remove' : 'add'"
+                  ></span>
+                </button>
+                <div x-cloak="" x-collapse="" x-show="openFaq === 2">
+                  <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+                    Listing with us is currently free. We believe in creating a
+                    mutually beneficial partnership where you get exposure to
+                    our community, and our members get access to great deals.
+                  </p>
+                </div>
+              </div>
+              <div class="border-b border-gray-300 dark:border-gray-700 pb-4">
+                <button
+                  @click="openFaq === 3 ? openFaq = null : openFaq = 3"
+                  class="flex justify-between items-center w-full text-left"
+                >
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+                    What kind of perks perform best?
+                  </h3>
+                  <span
+                    class="material-symbols-outlined text-gray-900 dark:text-white"
+                    x-text="openFaq === 3 ? 'remove' : 'add'"
+                  ></span>
+                </button>
+                <div x-cloak="" x-collapse="" x-show="openFaq === 3">
+                  <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+                    Our members appreciate significant discounts, extended free
+                    trials, and exclusive access to premium features. The more
+                    unique and valuable your offer, the better it will perform.
+                  </p>
+                </div>
+              </div>
+              <div class="border-b border-gray-300 dark:border-gray-700 pb-4">
+                <button
+                  @click="openFaq === 4 ? openFaq = null : openFaq = 4"
+                  class="flex justify-between items-center w-full text-left"
+                >
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+                    How do I track the performance of my offer?
+                  </h3>
+                  <span
+                    class="material-symbols-outlined text-gray-900 dark:text-white"
+                    x-text="openFaq === 4 ? 'remove' : 'add'"
+                  ></span>
+                </button>
+                <div x-cloak="" x-collapse="" x-show="openFaq === 4">
+                  <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+                    We provide basic analytics to track clicks and views on your
+                    offer. For more detailed tracking, we recommend using unique
+                    coupon codes or referral links.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="py-16 sm:py-24 bg-white dark:bg-black/10">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
+            >
+              Ready to get started?
+            </h2>
+            <p
+              class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400"
+            >
+              Join our network of leading brands and gain access to a thriving
+              community of professionals.
+            </p>
+            <div class="mt-8">
+              <button
+                @click="modalOpen = true"
+                class="bg-primary text-gray-900 font-bold text-base py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+              >
+                Submit your offer
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="bg-luxury-green text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              <a class="text-sm text-gray-300 hover:text-primary" href="#"
+                >About</a
+              >
+              <a class="text-sm text-gray-300 hover:text-primary" href="#"
+                >Contact</a
+              >
+              <a class="text-sm text-gray-300 hover:text-primary" href="#"
+                >Terms of Service</a
+              >
+              <a class="text-sm text-gray-300 hover:text-primary" href="#"
+                >Privacy Policy</a
+              >
+            </div>
+            <p class="text-sm text-gray-400">
+              © 2023 Perks. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+      <div
+        @keydown.escape.window="modalOpen = false"
+        aria-labelledby="modal-title"
+        aria-modal="true"
+        class="fixed inset-0 z-50 overflow-y-auto"
+        role="dialog"
+        x-cloak=""
+        x-show="modalOpen"
+      >
+        <div
+          class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0"
+        >
+          <div
+            @click="modalOpen = false"
+            aria-hidden="true"
+            class="fixed inset-0 bg-gray-500/75 transition-opacity"
+            x-show="modalOpen"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-end="opacity-100"
+            x-transition:enter-start="opacity-0"
+            x-transition:leave="ease-in duration-200"
+            x-transition:leave-end="opacity-0"
+            x-transition:leave-start="opacity-100"
+          ></div>
+          <span
+            aria-hidden="true"
+            class="hidden sm:inline-block sm:align-middle sm:h-screen"
+            >​</span
+          >
+          <div
+            class="inline-block align-bottom bg-white dark:bg-background-dark rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            x-show="modalOpen"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+            x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            x-transition:leave="ease-in duration-200"
+            x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+          >
+            <div
+              class="bg-white dark:bg-background-dark px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
+            >
+              <div class="sm:flex sm:items-start">
+                <div
+                  class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full"
+                >
+                  <h3
+                    class="text-lg leading-6 font-medium text-gray-900 dark:text-white"
+                    id="modal-title"
+                  >
+                    Become a Partner
+                  </h3>
+                  <div class="mt-4">
+                    <form action="#" method="POST">
+                      <div class="space-y-4">
+                        <div>
+                          <label
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                            for="name"
+                            >Name</label
+                          >
+                          <input
+                            autocomplete="name"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+                            id="name"
+                            name="name"
+                            type="text"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                            for="company"
+                            >Company Name</label
+                          >
+                          <input
+                            autocomplete="organization"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+                            id="company"
+                            name="company"
+                            type="text"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                            for="email"
+                            >Email</label
+                          >
+                          <input
+                            autocomplete="email"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+                            id="email"
+                            name="email"
+                            type="email"
+                            value="your-email@example.com?subject=Become a Partner"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                            for="details"
+                            >Additional Details</label
+                          >
+                          <textarea
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+                            id="details"
+                            name="details"
+                            rows="4"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gray-50 dark:bg-gray-800 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
+            >
+              <button
+                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-gray-900 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:ml-3 sm:w-auto sm:text-sm"
+                type="button"
+              >
+                Submit
+              </button>
+              <button
+                @click="modalOpen = false"
+                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-700 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                type="button"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

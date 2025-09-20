@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Terms and Conditions / Privacy Policy</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2E4034", // Tranquil Green
+              "background-light": "#FDFBF7",
+              "background-dark": "#121212",
+              "accent-yellow": "#FFD700", // Yellow for active tab
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200"
+  >
+    <nav class="bg-primary text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">YourLogo</h1>
+        <div class="hidden md:flex space-x-6">
+          <a class="hover:text-accent-yellow" href="#">Home</a>
+          <a class="hover:text-accent-yellow" href="#">About</a>
+          <a class="hover:text-accent-yellow" href="#">Services</a>
+          <a class="hover:text-accent-yellow" href="#">Contact</a>
+        </div>
+        <button class="md:hidden">
+          <span class="material-icons">menu</span>
+        </button>
+      </div>
+    </nav>
+    <div class="container mx-auto px-4 py-16">
+      <h1
+        class="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+      >
+        Terms and Conditions / Privacy Policy
+      </h1>
+      <div
+        class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg flex space-x-2 mb-10 max-w-lg mx-auto"
+      >
+        <button
+          class="tab-button flex-1 py-3 px-4 rounded-md text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300"
+          onclick="showTab('terms')"
+        >
+          Terms &amp; Conditions
+        </button>
+        <button
+          class="tab-button active flex-1 py-3 px-4 rounded-md text-gray-800 dark:text-gray-900 font-medium transition-colors duration-300 bg-accent-yellow"
+          onclick="showTab('privacy')"
+        >
+          Privacy Policy
+        </button>
+      </div>
+      <div class="bg-white dark:bg-gray-800/50 p-10 rounded-lg shadow-lg">
+        <div class="tab-content prose dark:prose-invert max-w-none" id="terms">
+          <h2>Terms and Conditions</h2>
+          <p>
+            Welcome to our website. If you continue to browse and use this
+            website, you are agreeing to comply with and be bound by the
+            following terms and conditions of use, which together with our
+            privacy policy govern our relationship with you in relation to this
+            website. If you disagree with any part of these terms and
+            conditions, please do not use our website.
+          </p>
+          <h3>1. Introduction</h3>
+          <p>
+            The term 'us' or 'we' refers to the owner of the website. The term
+            'you' refers to the user or viewer of our website. The use of this
+            website is subject to the following terms of use:
+          </p>
+          <ul>
+            <li>
+              The content of the pages of this website is for your general
+              information and use only. It is subject to change without notice.
+            </li>
+            <li>
+              This website uses cookies to monitor browsing preferences. If you
+              do allow cookies to be used, personal information may be stored by
+              us for use by third parties.
+            </li>
+            <li>
+              Neither we nor any third parties provide any warranty or guarantee
+              as to the accuracy, timeliness, performance, completeness or
+              suitability of the information and materials found or offered on
+              this website for any particular purpose. You acknowledge that such
+              information and materials may contain inaccuracies or errors and
+              we expressly exclude liability for any such inaccuracies or errors
+              to the fullest extent permitted by law.
+            </li>
+          </ul>
+          <h3>2. User Obligations</h3>
+          <p>
+            Your use of any information or materials on this website is entirely
+            at your own risk, for which we shall not be liable. It shall be your
+            own responsibility to ensure that any products, services or
+            information available through this website meet your specific
+            requirements.
+          </p>
+          <h3>3. Intellectual Property</h3>
+          <p>
+            This website contains material which is owned by or licensed to us.
+            This material includes, but is not limited to, the design, layout,
+            look, appearance and graphics. Reproduction is prohibited other than
+            in accordance with the copyright notice, which forms part of these
+            terms and conditions.
+          </p>
+          <h3>4. Limitation of Liability</h3>
+          <p>
+            In no event will we be liable for any loss or damage including
+            without limitation, indirect or consequential loss or damage, or any
+            loss or damage whatsoever arising from loss of data or profits
+            arising out of, or in connection with, the use of this website.
+          </p>
+          <h3>5. Governing Law</h3>
+          <p>
+            Your use of this website and any dispute arising out of such use of
+            the website is subject to the laws of our country.
+          </p>
+        </div>
+        <div
+          class="tab-content active prose dark:prose-invert max-w-none"
+          id="privacy"
+        >
+          <h2>Privacy Policy</h2>
+          <h3>1. Privacy Policy</h3>
+          <p>
+            BrandStage values your privacy and is committed to protecting your
+            personal data. This Privacy Policy outlines how we collect, use,
+            store, and disclose your information when you use our website and
+            services.
+          </p>
+          <h3>1. Information We Collect</h3>
+          <p>
+            We collect personal data to provide and improve our services. The
+            types of data we collect include:
+          </p>
+          <h4>a. Personal Information</h4>
+          <ul>
+            <li>
+              Name, email address, and phone number (submitted via Google
+              Forms).
+            </li>
+            <li>
+              Business details (company name, type of brand, and activation
+              requirements).
+            </li>
+          </ul>
+          <h4>b. Usage Data</h4>
+          <p>
+            We may also collect information on how the Service is accessed and
+            used ("Usage Data"). This Usage Data may include information such as
+            your computer's Internet Protocol address (e.g. IP address), browser
+            type, browser version, the pages of our Service that you visit, the
+            time and date of your visit, the time spent on those pages, unique
+            device identifiers and other diagnostic data.
+          </p>
+          <h3>2. How We Use Your Information</h3>
+          <p>We use the collected data for various purposes:</p>
+          <ul>
+            <li>To provide and maintain our Service</li>
+            <li>To notify you about changes to our Service</li>
+            <li>
+              To allow you to participate in interactive features of our Service
+              when you choose to do so
+            </li>
+            <li>To provide customer support</li>
+            <li>
+              To gather analysis or valuable information so that we can improve
+              our Service
+            </li>
+            <li>To monitor the usage of our Service</li>
+            <li>To detect, prevent and address technical issues</li>
+          </ul>
+          <h3>3. Data Security</h3>
+          <p>
+            The security of your data is important to us, but remember that no
+            method of transmission over the Internet, or method of electronic
+            storage is 100% secure. While we strive to use commercially
+            acceptable means to protect your Personal Data, we cannot guarantee
+            its absolute security.
+          </p>
+          <h3>4. Your Data Protection Rights</h3>
+          <p>
+            You have certain data protection rights. We aim to take reasonable
+            steps to allow you to correct, amend, delete, or limit the use of
+            your Personal Data. If you wish to be informed what Personal Data we
+            hold about you and if you want it to be removed from our systems,
+            please contact us.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-primary text-white mt-16">
+      <div class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">YourLogo</h3>
+            <p class="text-gray-300">Providing quality services since 2023.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li><a class="hover:text-accent-yellow" href="#">Home</a></li>
+              <li><a class="hover:text-accent-yellow" href="#">About Us</a></li>
+              <li><a class="hover:text-accent-yellow" href="#">Services</a></li>
+              <li><a class="hover:text-accent-yellow" href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Legal</h4>
+            <ul class="space-y-2">
+              <li>
+                <a class="hover:text-accent-yellow" href="#"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-accent-yellow" href="#">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
+            <div class="flex space-x-4">
+              <a
+                class="text-gray-300 hover:text-accent-yellow text-2xl"
+                href="#"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                class="text-gray-300 hover:text-accent-yellow text-2xl"
+                href="#"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                class="text-gray-300 hover:text-accent-yellow text-2xl"
+                href="#"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm6.406-11.845a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400"
+        >
+          <p>© 2024 YourLogo. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function showTab(tabName) {
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => {
+          content.classList.remove("active");
+        });
+        document.getElementById(tabName).classList.add("active");
+        const tabButtons = document.querySelectorAll(".tab-button");
+        tabButtons.forEach((button) => {
+          button.classList.remove(
+            "active",
+            "bg-accent-yellow",
+            "text-gray-800",
+            "dark:text-gray-900"
+          );
+          button.classList.add("text-gray-600", "dark:text-gray-300");
+        });
+        const activeButton = document.querySelector(
+          `.tab-button[onclick="showTab('${tabName}')"]`
+        );
+        activeButton.classList.add(
+          "active",
+          "bg-accent-yellow",
+          "text-gray-800",
+          "dark:text-gray-900"
+        );
+        activeButton.classList.remove("text-gray-600", "dark:text-gray-300");
+      }
+    </script>
+  </body>
+</html>

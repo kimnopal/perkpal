@@ -1,8 +1,13 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #f9c806
+
+  --background-light: #F5F5DC;                      
+  --forest-green: #013220;
+  --white: #FFFFFF;
 }
 
 @theme inline {
@@ -16,6 +21,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --background-dark: #1a202c;
   }
 }
 
@@ -23,4 +29,134 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #f9c806;
+  --background-light: #f5f5dc;
+  --forest-green: #013220;
+  --white: #ffffff;
+  --background-dark: #1a202c;
+
+  /* about */
+  --luxury-green: #1a4731;
+  --light-green-bg: #f0f5f3;
+  --light-gray-bg: #f9fafb;
+  --perk-yellow: #fef9c3;
+  --perk-pink: #fce7f3;
+  --perk-purple: #f3e8ff;
+  --perk-green: #e6f0eb;
+  --perk-neutral: #f3f4f6;
+
+  /* contact */
+  --soft-pink: #fadadd;
+  --text-light: #181711;
+  --text-dark: #f8f8f5;
+  --muted-light: #8c835f;
+  --muted-dark: #a19b81;
+
+  /* journal */
+  --light-pink: #fadadd;
+
+  /* partner with us */
+  --dark-cream: #f5f5dc;
+
+  /* TOS */
+  --accent-yellow: #ffd700;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  /* Colors */
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+  --color-background-light: var(--background-light);
+  --color-background-dark: var(--background-dark);
+  --color-forest-green: var(--forest-green);
+  --color-luxury-green: var(--luxury-green);
+  --color-white: var(--white);
+  --color-foreground: var(--foreground);
+
+  /* about */
+  --color-light-green-bg: var(--light-green-bg);
+  --color-light-gray-bg: var(--light-gray-bg);
+  --color-perk-yellow: var(--perk-yellow);
+  --color-perk-pink: var(--perk-pink);
+  --color-perk-purple: var(--perk-purple);
+  --color-perk-green: var(--perk-green);
+  --color-perk-neutral: var(--perk-neutral);
+
+  /* contact */
+  --color-soft-pink: var(--soft-pink);
+  --color-text-light: var(--text-light);
+  --color-text-dark: var(--text-dark);
+  --color-muted-light: var(--muted-light);
+  --color-muted-dark: var(--muted-dark);
+
+  /* journals */
+  --color-light-pink: var(--light-pink);
+
+  /* partner with us */
+  --color-dark-cream: var(--dark-cream);
+
+  /* TOS */
+  --color-accent-yellow: var(--accent-yellow);
+
+  /* Font families */
+  --font-sans: var(--font-work-sans);
+  --font-mono: var(--font-work-mono);
+  --font-display: "Work Sans", sans-serif;
+
+  /* Border radius */
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+}
+
+/* Dark mode class-based configuration */
+.dark {
+  --background: #1a202c;
+  --foreground: #ededed;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-display);
+}
+
+/* Custom animations untuk floating effect */
+@keyframes float {
+  0% {
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+      translateY(0px);
+  }
+  50% {
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+      translateY(-10px);
+  }
+  100% {
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+      translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
 }

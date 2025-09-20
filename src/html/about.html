@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Work+Sans%3Awght%40400%3B500%3B700%3B900"
+      onload="this.rel='stylesheet'"
+      rel="stylesheet"
+    />
+    <title>Stitch Design</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A4731",
+              "background-light": "#f8f8f5",
+              "background-dark": "#121212",
+              "luxury-green": "#1A4731",
+              "light-green-bg": "#F0F5F3",
+              "light-gray-bg": "#F9FAFB",
+              "perk-green": "#E6F0EB",
+              "perk-yellow": "#FEF9C3",
+              "perk-neutral": "#F3F4F6",
+              "perk-pink": "#FCE7F3", // Added pink
+              "perk-purple": "#F3E8FF", // Added purple
+            },
+            fontFamily: {
+              display: ["Work Sans"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display">
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden"
+    >
+      <div class="flex h-full grow flex-col">
+        <header
+          class="flex items-center justify-between whitespace-nowrap bg-luxury-green px-10 py-4 text-white"
+        >
+          <div class="flex items-center gap-4">
+            <div class="size-8 text-white">
+              <svg
+                fill="none"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-xl font-bold">PerkPal</h2>
+          </div>
+          <nav class="hidden md:flex flex-1 justify-center items-center gap-8">
+            <a
+              class="font-medium hover:text-yellow-400 transition-colors"
+              href="#"
+              >Perks</a
+            >
+            <a
+              class="font-medium hover:text-yellow-400 transition-colors"
+              href="#"
+              >Community</a
+            >
+            <a class="font-medium text-yellow-400" href="#">About</a>
+          </nav>
+          <div class="flex gap-2">
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-white/20 text-white text-sm font-bold hover:bg-white/30 transition-colors"
+            >
+              <span class="truncate">Sign in</span>
+            </button>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-yellow-400 text-luxury-green text-sm font-bold hover:opacity-90 transition-opacity"
+            >
+              <span class="truncate">Submit a Perk</span>
+            </button>
+          </div>
+        </header>
+        <main class="flex-1">
+          <section
+            class="relative h-[50vh] bg-cover bg-center text-white"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            "
+          >
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div
+              class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4"
+            >
+              <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+                Empowering the Independent Workforce
+              </h1>
+              <p class="mt-4 max-w-2xl text-lg md:text-xl text-white/90">
+                We're on a mission to provide founders, freelancers, and remote
+                workers in Southeast Asia with the best perks and tools to
+                succeed.
+              </p>
+            </div>
+          </section>
+          <section
+            class="py-12 md:py-20 px-4 md:px-10 lg:px-20 xl:px-40 bg-light-gray-bg dark:bg-background-dark"
+          >
+            <div class="max-w-6xl mx-auto">
+              <div class="text-center mb-12">
+                <h2
+                  class="text-3xl md:text-4xl font-bold text-background-dark dark:text-background-light"
+                >
+                  What We Do
+                </h2>
+                <p
+                  class="mt-4 text-lg text-background-dark/80 dark:text-background-light/80 max-w-3xl mx-auto"
+                >
+                  PerkPal is your unfair advantage. We curate exclusive deals
+                  and build a supportive community to help you thrive in your
+                  independent career.
+                </p>
+              </div>
+              <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div
+                  class="flex flex-col items-center p-6 bg-perk-pink dark:bg-pink-900/30 rounded-xl shadow-md"
+                >
+                  <div
+                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400"
+                  >
+                    <span
+                      class="material-symbols-outlined text-4xl text-luxury-green"
+                      >military_tech</span
+                    >
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mb-2"
+                  >
+                    Exclusive Perks
+                  </h3>
+                  <p
+                    class="text-background-dark/80 dark:text-background-light/80"
+                  >
+                    Access unbeatable discounts on software, co-working spaces,
+                    lifestyle brands, and more, handpicked for your needs.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col items-center p-6 bg-perk-yellow dark:bg-yellow-400/20 rounded-xl shadow-md"
+                >
+                  <div
+                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400"
+                  >
+                    <span
+                      class="material-symbols-outlined text-4xl text-luxury-green"
+                      >groups</span
+                    >
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mb-2"
+                  >
+                    Community &amp; Events
+                  </h3>
+                  <p
+                    class="text-background-dark/80 dark:text-background-light/80"
+                  >
+                    Connect with fellow entrepreneurs, share knowledge, and grow
+                    your network through our exclusive events and online
+                    platform.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col items-center p-6 bg-perk-purple dark:bg-purple-900/30 rounded-xl shadow-md"
+                >
+                  <div
+                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400"
+                  >
+                    <span
+                      class="material-symbols-outlined text-4xl text-luxury-green"
+                      >lightbulb</span
+                    >
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mb-2"
+                  >
+                    Valuable Resources
+                  </h3>
+                  <p
+                    class="text-background-dark/80 dark:text-background-light/80"
+                  >
+                    Gain insights from industry experts, access helpful guides,
+                    and get the support you need to navigate your journey.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            class="py-12 md:py-20 bg-light-green-bg dark:bg-luxury-green/10 px-4 md:px-10 lg:px-20 xl:px-40"
+          >
+            <div class="max-w-6xl mx-auto">
+              <div class="text-center mb-12">
+                <h2
+                  class="text-3xl md:text-4xl font-bold text-background-dark dark:text-background-light"
+                >
+                  Who We Serve
+                </h2>
+                <p
+                  class="mt-4 text-lg text-background-dark/80 dark:text-background-light/80 max-w-3xl mx-auto"
+                >
+                  We cater to the ambitious and the self-driven in Malaysia and
+                  Singapore. Our platform is built for:
+                </p>
+              </div>
+              <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="flex flex-col items-center p-6">
+                  <div
+                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400"
+                  >
+                    <span
+                      class="material-symbols-outlined text-4xl text-luxury-green"
+                      >rocket_launch</span
+                    >
+                  </div>
+                  <h4
+                    class="text-xl font-bold text-background-dark dark:text-background-light"
+                  >
+                    Founders &amp; Startups
+                  </h4>
+                  <p
+                    class="mt-2 text-background-dark/80 dark:text-background-light/80"
+                  >
+                    Get the resources you need to scale your business without
+                    breaking the bank.
+                  </p>
+                </div>
+                <div class="flex flex-col items-center p-6">
+                  <div
+                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400"
+                  >
+                    <span
+                      class="material-symbols-outlined text-4xl text-luxury-green"
+                      >brush</span
+                    >
+                  </div>
+                  <h4
+                    class="text-xl font-bold text-background-dark dark:text-background-light"
+                  >
+                    Freelancers &amp; Solopreneurs
+                  </h4>
+                  <p
+                    class="mt-2 text-background-dark/80 dark:text-background-light/80"
+                  >
+                    Access perks that are usually reserved for large
+                    corporations.
+                  </p>
+                </div>
+                <div class="flex flex-col items-center p-6">
+                  <div
+                    class="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400"
+                  >
+                    <span
+                      class="material-symbols-outlined text-4xl text-luxury-green"
+                      >wifi</span
+                    >
+                  </div>
+                  <h4
+                    class="text-xl font-bold text-background-dark dark:text-background-light"
+                  >
+                    Remote Workers
+                  </h4>
+                  <p
+                    class="mt-2 text-background-dark/80 dark:text-background-light/80"
+                  >
+                    Enhance your work-from-anywhere lifestyle with our curated
+                    benefits.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            class="py-12 md:py-20 bg-perk-yellow/50 dark:bg-yellow-400/10 px-4 md:px-10 lg:px-20 xl:px-40"
+            x-data="{ openFaq: null }"
+          >
+            <div class="max-w-4xl mx-auto">
+              <div class="text-center mb-12">
+                <h2
+                  class="text-3xl md:text-4xl font-bold text-background-dark dark:text-background-light"
+                >
+                  Frequently Asked Questions
+                </h2>
+                <p
+                  class="mt-4 text-lg text-background-dark/80 dark:text-background-light/80 max-w-3xl mx-auto"
+                >
+                  Have questions? We've got answers. If you can't find what
+                  you're looking for, feel free to contact us.
+                </p>
+              </div>
+              <div class="space-y-4">
+                <div
+                  class="bg-white dark:bg-luxury-green/20 rounded-lg shadow-md"
+                >
+                  <button
+                    @click="openFaq = openFaq === 1 ? null : 1"
+                    class="w-full flex justify-between items-center text-left px-6 py-4"
+                  >
+                    <h3
+                      class="text-lg font-semibold text-background-dark dark:text-background-light"
+                    >
+                      What is PerkPal and who is it for?
+                    </h3>
+                    <span
+                      :class="{ 'rotate-45': openFaq === 1 }"
+                      class="material-symbols-outlined text-luxury-green dark:text-yellow-400 transition-transform"
+                      >add</span
+                    >
+                  </button>
+                  <div x-collapse="" x-show="openFaq === 1">
+                    <div
+                      class="px-6 pb-4 text-background-dark/80 dark:text-background-light/80"
+                    >
+                      <p>
+                        PerkPal is an exclusive perks marketplace designed for
+                        founders, freelancers, solopreneurs, and remote workers
+                        in Malaysia and Singapore. We provide access to deals
+                        and discounts that are typically reserved for large
+                        corporations.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-white dark:bg-luxury-green/20 rounded-lg shadow-md"
+                >
+                  <button
+                    @click="openFaq = openFaq === 2 ? null : 2"
+                    class="w-full flex justify-between items-center text-left px-6 py-4"
+                  >
+                    <h3
+                      class="text-lg font-semibold text-background-dark dark:text-background-light"
+                    >
+                      How much does it cost to join?
+                    </h3>
+                    <span
+                      :class="{ 'rotate-45': openFaq === 2 }"
+                      class="material-symbols-outlined text-luxury-green dark:text-yellow-400 transition-transform"
+                      >add</span
+                    >
+                  </button>
+                  <div x-collapse="" x-show="openFaq === 2">
+                    <div
+                      class="px-6 pb-4 text-background-dark/80 dark:text-background-light/80"
+                    >
+                      <p>
+                        Currently, PerkPal membership is completely free! We
+                        believe in empowering the independent workforce, and
+                        that starts with making our platform accessible to
+                        everyone who needs it.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-white dark:bg-luxury-green/20 rounded-lg shadow-md"
+                >
+                  <button
+                    @click="openFaq = openFaq === 3 ? null : 3"
+                    class="w-full flex justify-between items-center text-left px-6 py-4"
+                  >
+                    <h3
+                      class="text-lg font-semibold text-background-dark dark:text-background-light"
+                    >
+                      What kind of perks can I expect?
+                    </h3>
+                    <span
+                      :class="{ 'rotate-45': openFaq === 3 }"
+                      class="material-symbols-outlined text-luxury-green dark:text-yellow-400 transition-transform"
+                      >add</span
+                    >
+                  </button>
+                  <div x-collapse="" x-show="openFaq === 3">
+                    <div
+                      class="px-6 pb-4 text-background-dark/80 dark:text-background-light/80"
+                    >
+                      <p>
+                        We offer a wide range of perks, including significant
+                        discounts on SAAS/AI tools, co-working space passes,
+                        business insurance, lifestyle benefits like gym
+                        memberships, and much more. Our deals are specifically
+                        curated for the professional and personal needs of our
+                        members.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-white dark:bg-luxury-green/20 rounded-lg shadow-md"
+                >
+                  <button
+                    @click="openFaq = openFaq === 4 ? null : 4"
+                    class="w-full flex justify-between items-center text-left px-6 py-4"
+                  >
+                    <h3
+                      class="text-lg font-semibold text-background-dark dark:text-background-light"
+                    >
+                      How do I redeem a perk?
+                    </h3>
+                    <span
+                      :class="{ 'rotate-45': openFaq === 4 }"
+                      class="material-symbols-outlined text-luxury-green dark:text-yellow-400 transition-transform"
+                      >add</span
+                    >
+                  </button>
+                  <div x-collapse="" x-show="openFaq === 4">
+                    <div
+                      class="px-6 pb-4 text-background-dark/80 dark:text-background-light/80"
+                    >
+                      <p>
+                        Simply sign up to become a member, browse our
+                        marketplace, and click on the perk you're interested in.
+                        Each perk will have specific instructions on how to
+                        redeem it, which usually involves a unique discount code
+                        or a special sign-up link.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-white dark:bg-luxury-green/20 rounded-lg shadow-md"
+                >
+                  <button
+                    @click="openFaq = openFaq === 5 ? null : 5"
+                    class="w-full flex justify-between items-center text-left px-6 py-4"
+                  >
+                    <h3
+                      class="text-lg font-semibold text-background-dark dark:text-background-light"
+                    >
+                      Can I suggest a perk or a partner?
+                    </h3>
+                    <span
+                      :class="{ 'rotate-45': openFaq === 5 }"
+                      class="material-symbols-outlined text-luxury-green dark:text-yellow-400 transition-transform"
+                      >add</span
+                    >
+                  </button>
+                  <div x-collapse="" x-show="openFaq === 5">
+                    <div
+                      class="px-6 pb-4 text-background-dark/80 dark:text-background-light/80"
+                    >
+                      <p>
+                        Absolutely! We are always looking to expand our
+                        offerings. If there's a tool, service, or brand you'd
+                        love to see on PerkPal, please use the 'Submit a Perk'
+                        button or contact us. We value our community's input.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-white dark:bg-luxury-green/20 rounded-lg shadow-md"
+                >
+                  <button
+                    @click="openFaq = openFaq === 6 ? null : 6"
+                    class="w-full flex justify-between items-center text-left px-6 py-4"
+                  >
+                    <h3
+                      class="text-lg font-semibold text-background-dark dark:text-background-light"
+                    >
+                      Is PerkPal available outside of Malaysia and Singapore?
+                    </h3>
+                    <span
+                      :class="{ 'rotate-45': openFaq === 6 }"
+                      class="material-symbols-outlined text-luxury-green dark:text-yellow-400 transition-transform"
+                      >add</span
+                    >
+                  </button>
+                  <div x-collapse="" x-show="openFaq === 6">
+                    <div
+                      class="px-6 pb-4 text-background-dark/80 dark:text-background-light/80"
+                    >
+                      <p>
+                        Our primary focus is currently on serving the
+                        independent workforce in Malaysia and Singapore.
+                        However, we have plans to expand to other countries in
+                        Southeast Asia in the future. Stay tuned!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+        <footer class="bg-luxury-green text-white py-12 md:py-16 px-4 md:px-10">
+          <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+              <div class="md:col-span-4">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="size-10 text-white">
+                    <svg
+                      fill="none"
+                      viewBox="0 0 48 48"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h2 class="text-2xl font-bold">PerkPal</h2>
+                </div>
+                <p class="text-white/80 pr-8">
+                  Empowering the independent workforce in Southeast Asia.
+                </p>
+              </div>
+              <div class="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+                <div>
+                  <h3 class="text-lg font-semibold text-white mb-4">
+                    Platform
+                  </h3>
+                  <ul class="space-y-2">
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >Perks</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >SAAS/AI Tools</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >Lifestyle</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-white mb-4">Company</h3>
+                  <ul class="space-y-2">
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >About Us</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >Partner With Us</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >Journal</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-white mb-4">Support</h3>
+                  <ul class="space-y-2">
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >Terms of Service</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-white/80 hover:text-yellow-400 transition-colors"
+                        href="#"
+                        >Contact</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="my-8 flex justify-center items-center">
+              <div class="flex items-center space-x-6">
+                <a
+                  class="text-white/80 hover:text-yellow-400 transition-colors"
+                  href="#"
+                >
+                  <svg
+                    class="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 0 .14.02.2.04.07.03.11.06.16.1.24.18.39.4.5.64.05.11.08.23.08.34v15.1c0 .24-.05.48-.14.71-.12.31-.3.58-.55.8-.23.2-.5.35-.8.45-.35.1-.7.15-1.07.15-.11 0-.22 0-.33-.02-.3-.04-.59-.14-.87-.28-.31-.17-.6-.38-.86-.62-.25-.24-.48-.5-.68-.78-.2-.29-.38-.59-.53-.9-.16-.3-.29-.62-.4-.94-.12-.34-.21-.68-.28-1.03-.02-.09-.04-.18-.04-.27V.99c0-.28.05-.55.15-.81.1-.25.25-.48.45-.66.23-.21.5-.37.8-.48.16-.06.33-.1.5-.12.18-.02.36-.03.55-.03Zm3.9 1.54c-.21 0-.41-.01-.62-.01-1.12 0-2.24.01-3.36 0-1.37 0-2.45.92-2.6 2.27-.05.47-.02.95.06 1.42.06.36.14.71.24 1.06.1.34.22.68.36 1.01.14.33.3.65.48.96.19.32.4.62.64.9.28.32.59.6.93.84.37.25.77.44 1.19.58.41.13.84.2 1.28.21.9.01 1.74-.43 2.25-1.2.24-.37.39-.79.45-1.22.06-.43.08-.86.08-1.29V3.52c-.01-.5-.13-.97-.37-1.38-.2-.34-.5-.61-.85-.78-.2-.1-.42-.14-.64-.16-.2-.02-.4-.02-.6-.02Z"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  class="text-white/80 hover:text-yellow-400 transition-colors"
+                  href="#"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  class="text-white/80 hover:text-yellow-400 transition-colors"
+                  href="#"
+                >
+                  <svg
+                    class="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919C8.415 2.175 8.796 2.163 12 2.163m0-1.84c-3.27 0-3.66.014-4.944.072C2.694.59 1.259 2.025.932 4.418.86 5.698.847 6.082.847 12s.013 6.302.085 7.582c.327 2.392 1.763 3.828 4.156 4.156 1.28.058 1.673.072 4.944.072s3.665-.014 4.944-.072c2.392-.328 3.828-1.763 4.156-4.156.072-1.28.085-1.673.085-4.944s-.013-3.665-.085-4.944c-.328-2.392-1.763-3.828-4.156-4.156C15.665.334 15.27.323 12 .323m0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324M12 16a4 4 0 110-8 4 4 0 010 8m6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  class="text-white/80 hover:text-yellow-400 transition-colors"
+                  href="#"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8.5 18H6.5V9h2v9zm-1-10.5A1.5 1.5 0 116 6a1.5 1.5 0 011.5 1.5zM18 18h-2v-4.5c0-1.036-.019-2.369-1.5-2.369-1.481 0-1.71 1.157-1.71 2.294V18h-2V9h1.9v.9h.027a2.01 2.01 0 011.853-1.026c1.98 0 2.344 1.304 2.344 3.001V18z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div
+              class="mt-8 pt-8 border-t border-white/20 flex flex-col items-center justify-between"
+            >
+              <p class="text-sm text-white/60 text-center mb-4">
+                © 2023 PerkPal. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script
+      defer=""
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer=""
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </body>
+</html>

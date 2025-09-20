@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Work+Sans:wght@400;500;700;900"
+      onload="this.rel='stylesheet'"
+      rel="stylesheet"
+    />
+    <title>PerkPal</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f9c806",
+              "background-light": "#F5F5DC",
+              "background-dark": "#1a202c",
+              "forest-green": "#013220",
+              white: "#FFFFFF",
+            },
+            fontFamily: {
+              display: ["Work Sans"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-white dark:bg-background-dark font-display text-background-dark dark:text-background-light"
+  >
+    <div class="relative flex flex-col min-h-screen w-full overflow-x-hidden">
+      <header class="bg-forest-green dark:bg-forest-green/90">
+        <div
+          class="container mx-auto px-6 py-4 flex items-center justify-between whitespace-nowrap"
+        >
+          <div class="flex items-center gap-3 text-white">
+            <svg
+              class="size-6 text-primary"
+              fill="none"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <h2 class="text-xl font-bold">PerkPal</h2>
+          </div>
+          <nav
+            class="hidden md:flex items-center gap-8 text-sm font-medium text-white/80"
+          >
+            <a class="hover:text-primary transition-colors" href="#latest-perks"
+              >Perks</a
+            >
+            <a class="hover:text-primary transition-colors" href="#how-it-works"
+              >How It Works</a
+            >
+            <a class="hover:text-primary transition-colors" href="#journal"
+              >Journal</a
+            >
+          </nav>
+          <div class="flex items-center gap-2">
+            <a
+              class="px-6 py-3 rounded-lg text-base font-bold bg-primary text-background-dark hover:bg-opacity-90 transition-transform transform hover:scale-105"
+              href="#latest-perks"
+              >Browse Perks</a
+            >
+          </div>
+        </div>
+      </header>
+      <main class="flex-grow">
+        <section
+          class="relative min-h-[60vh] md:min-h-[85vh] flex items-center bg-background-light dark:bg-background-dark text-background-dark dark:text-background-light border-b border-gray-200 dark:border-gray-700"
+        >
+          <div
+            class="container mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center"
+          >
+            <div class="text-left flex flex-col items-start gap-6 md:pr-10">
+              <h1
+                class="text-4xl md:text-6xl font-black tracking-tighter max-w-xl"
+              >
+                Supercharge Your Hustle.
+              </h1>
+              <p
+                class="text-base md:text-lg max-w-xl text-background-dark/80 dark:text-background-light/80"
+              >
+                Exclusive perks for Malaysia &amp; Singapore's top founders,
+                freelancers, solopreneurs, and remote workers. Save big on tools
+                that grow your business.
+              </p>
+              <div class="flex flex-wrap justify-start gap-4 mt-4">
+                <a
+                  class="px-8 py-4 rounded-lg text-lg font-bold bg-primary text-background-dark hover:bg-opacity-90 transition-transform transform hover:scale-105"
+                  href="#latest-perks"
+                  >Explore All Perks</a
+                >
+                <a
+                  class="px-8 py-4 rounded-lg text-lg font-bold bg-forest-green text-white hover:bg-opacity-90 transition-transform transform hover:scale-105"
+                  href="#"
+                  >List Your Perks</a
+                >
+              </div>
+            </div>
+            <div
+              class="relative w-full max-w-lg mx-auto md:mx-0 justify-self-end"
+            >
+              <img
+                alt="Person coworking with perk boxes"
+                class="rounded-full aspect-square object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIZqHDZHNxZ2m_zIKqkbNP0eWKpbVd6cZqtnphAbwNA1ffrayh0orupck3mO8EI8AIxacUwboSD-d9BXKLcP_Yz9yplevdhZdlxnShf7ZMcZA16d8ueh-NKGgLqNJjAC2yXK5rHx_Ndd8p0ZZXfdPlKAJc5v0TPCJgdZorO5pppB7uoDa5_I_W_OdEy5lFGS7WKuSOf-GN7IwuD43YvIbFNT1U-LokqPeijyI31Okb1kVFWZt4V4xh5zXoMQz8FJbX8UBrl49aE4Ym"
+              />
+              <div
+                class="absolute top-0 -left-10 transform -translate-x-1/4 -translate-y-1/4 animate-float"
+              >
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+                  <p class="font-bold text-sm">Zoom</p>
+                  <p class="text-xs text-gray-500">30% Off</p>
+                </div>
+              </div>
+              <div
+                class="absolute top-10 right-0 transform translate-x-1/4 -translate-y-1/2 animate-float animation-delay-1000"
+              >
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+                  <p class="font-bold text-sm">Slack</p>
+                  <p class="text-xs text-gray-500">25% Off</p>
+                </div>
+              </div>
+              <div
+                class="absolute bottom-20 -right-12 transform translate-x-1/2 translate-y-1/2 animate-float animation-delay-2000"
+              >
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+                  <p class="font-bold text-sm">Notion</p>
+                  <p class="text-xs text-gray-500">$50 Credit</p>
+                </div>
+              </div>
+              <div
+                class="absolute bottom-5 left-0 transform -translate-x-1/2 translate-y-1/4 animate-float animation-delay-3000"
+              >
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+                  <p class="font-bold text-sm">Figma</p>
+                  <p class="text-xs text-gray-500">Free Pro Plan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <style>
+            @keyframes float {
+              0% {
+                transform: translate(
+                    var(--tw-translate-x),
+                    var(--tw-translate-y)
+                  )
+                  translateY(0px);
+              }
+              50% {
+                transform: translate(
+                    var(--tw-translate-x),
+                    var(--tw-translate-y)
+                  )
+                  translateY(-10px);
+              }
+              100% {
+                transform: translate(
+                    var(--tw-translate-x),
+                    var(--tw-translate-y)
+                  )
+                  translateY(0px);
+              }
+            }
+            .animate-float {
+              animation: float 3s ease-in-out infinite;
+            }
+            .animation-delay-1000 {
+              animation-delay: 1s;
+            }
+            .animation-delay-2000 {
+              animation-delay: 2s;
+            }
+            .animation-delay-3000 {
+              animation-delay: 3s;
+            }
+          </style>
+        </section>
+        <section
+          class="py-16 md:py-24 bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-700"
+          id="how-it-works"
+        >
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+              <h2
+                class="text-3xl md:text-4xl font-bold tracking-tight text-background-dark dark:text-background-light"
+              >
+                How It Works
+              </h2>
+              <p
+                class="mt-2 text-lg text-background-dark/70 dark:text-background-light/70"
+              >
+                It's as easy as 1, 2, 3.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+              <div class="flex flex-col items-center gap-4">
+                <div class="bg-primary/10 dark:bg-primary/20 p-6 rounded-full">
+                  <svg
+                    class="h-10 w-10 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </div>
+                <h3
+                  class="text-xl font-bold text-background-dark dark:text-background-light"
+                >
+                  1. Browse Perks
+                </h3>
+                <p
+                  class="text-background-dark/70 dark:text-background-light/70"
+                >
+                  Explore our curated marketplace of exclusive deals.
+                </p>
+              </div>
+              <div class="flex flex-col items-center gap-4">
+                <div class="bg-primary/10 dark:bg-primary/20 p-6 rounded-full">
+                  <svg
+                    class="h-10 w-10 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </div>
+                <h3
+                  class="text-xl font-bold text-background-dark dark:text-background-light"
+                >
+                  2. Select a Deal
+                </h3>
+                <p
+                  class="text-background-dark/70 dark:text-background-light/70"
+                >
+                  Choose the offer that best fits your needs.
+                </p>
+              </div>
+              <div class="flex flex-col items-center gap-4">
+                <div class="bg-primary/10 dark:bg-primary/20 p-6 rounded-full">
+                  <svg
+                    class="h-10 w-10 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </div>
+                <h3
+                  class="text-xl font-bold text-background-dark dark:text-background-light"
+                >
+                  3. Redeem &amp; Save
+                </h3>
+                <p
+                  class="text-background-dark/70 dark:text-background-light/70"
+                >
+                  Follow the link to the partner's site and enjoy your discount.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="py-16 md:py-24 bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-700"
+          id="latest-perks"
+        >
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+              <h2
+                class="text-3xl md:text-4xl font-bold tracking-tight text-background-dark dark:text-background-light"
+              >
+                Latest Perks
+              </h2>
+              <p
+                class="mt-2 text-lg text-background-dark/70 dark:text-background-light/70"
+              >
+                Fresh deals added every week.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white dark:bg-gray-800"
+              >
+                <div
+                  class="w-full h-48 bg-cover bg-center"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4OLlHf2izWpBNAFGOXyrGFWhgXQlMlZMfOqH7RfaVjVW1OCfwRCvXqsbdDAsi6wDUB0tX00T3D0b15cB4_mziqJYPYWYZcptPU5qIha7I54PdLNuz6VnFdOYxK_DlQt8KcFyq026uCR6fI8NVyS7T4FIthnEGEnVRpJ8ypoOA4qKDWP8ebitk8j0TK6hsCDsVna5M8R7IaEb4FHtvb8GYSL4eX5KpBG468IVkraRFCNvVfgFi879Bw5JbeiPWvKRP8dWmNA5MNuqj');
+                  "
+                ></div>
+                <div class="p-6">
+                  <p class="text-sm text-primary font-bold">MARKETING</p>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mt-2"
+                  >
+                    Growth Hacking Toolkit
+                  </h3>
+                  <p
+                    class="text-background-dark/70 dark:text-background-light/70 mt-2"
+                  >
+                    Get 50% off for 12 months on all marketing automation tools.
+                  </p>
+                  <a
+                    class="inline-block mt-4 font-bold text-primary hover:underline"
+                    href="#"
+                    >Claim Perk →</a
+                  >
+                </div>
+              </div>
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white dark:bg-gray-800"
+              >
+                <div
+                  class="w-full h-48 bg-cover bg-center"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4OLlHf2izWpBNAFGOXyrGFWhgXQlMlZMfOqH7RfaVjVW1OCfwRCvXqsbdDAsi6wDUB0tX00T3D0b15cB4_mziqJYPYWYZcptPU5qIha7I54PdLNuz6VnFdOYxK_DlQt8KcFyq026uCR6fI8NVyS7T4FIthnEGEnVRpJ8ypoOA4qKDWP8ebitk8j0TK6hsCDsVna5M8R7IaEb4FHtvb8GYSL4eX5KpBG468IVkraRFCNvVfgFi879Bw5JbeiPWvKRP8dWmNA5MNuqj');
+                  "
+                ></div>
+                <div class="p-6">
+                  <p class="text-sm text-primary font-bold">COWORKING</p>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mt-2"
+                  >
+                    City Hub Pass
+                  </h3>
+                  <p
+                    class="text-background-dark/70 dark:text-background-light/70 mt-2"
+                  >
+                    20% off your first 3 months at any coworking space in KL
+                    &amp; SG.
+                  </p>
+                  <a
+                    class="inline-block mt-4 font-bold text-primary hover:underline"
+                    href="#"
+                    >Claim Perk →</a
+                  >
+                </div>
+              </div>
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white dark:bg-gray-800"
+              >
+                <div
+                  class="w-full h-48 bg-cover bg-center"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4OLlHf2izWpBNAFGOXyrGFWhgXQlMlZMfOqH7RfaVjVW1OCfwRCvXqsbdDAsi6wDUB0tX00T3D0b15cB4_mziqJYPYWYZcptPU5qIha7I54PdLNuz6VnFdOYxK_DlQt8KcFyq026uCR6fI8NVyS7T4FIthnEGEnVRpJ8ypoOA4qKDWP8ebitk8j0TK6hsCDsVna5M8R7IaEb4FHtvb8GYSL4eX5KpBG468IVkraRFCNvVfgFi879Bw5JbeiPWvKRP8dWmNA5MNuqj');
+                  "
+                ></div>
+                <div class="p-6">
+                  <p class="text-sm text-primary font-bold">FINANCE</p>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mt-2"
+                  >
+                    FinTech Suite
+                  </h3>
+                  <p
+                    class="text-background-dark/70 dark:text-background-light/70 mt-2"
+                  >
+                    Zero fees on your first S$10,000 of international transfers.
+                  </p>
+                  <a
+                    class="inline-block mt-4 font-bold text-primary hover:underline"
+                    href="#"
+                    >Claim Perk →</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="py-16 md:py-24 bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-700"
+          id="journal"
+        >
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+              <h2
+                class="text-3xl md:text-4xl font-bold tracking-tight text-background-dark dark:text-background-light"
+              >
+                From The Journal
+              </h2>
+              <p
+                class="mt-2 text-lg text-background-dark/70 dark:text-background-light/70"
+              >
+                Insights and stories for the modern professional.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="group">
+                <div
+                  class="w-full aspect-video bg-cover bg-center rounded-xl overflow-hidden transform group-hover:scale-105 transition-transform duration-300"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4OLlHf2izWpBNAFGOXyrGFWhgXQlMlZMfOqH7RfaVjVW1OCfwRCvXqsbdDAsi6wDUB0tX00T3D0b15cB4_mziqJYPYWYZcptPU5qIha7I54PdLNuz6VnFdOYxK_DlQt8KcFyq026uCR6fI8NVyS7T4FIthnEGEnVRpJ8ypoOA4qKDWP8ebitk8j0TK6hsCDsVna5M8R7IaEb4FHtvb8GYSL4eX5KpBG468IVkraRFCNvVfgFi879Bw5JbeiPWvKRP8dWmNA5MNuqj');
+                  "
+                ></div>
+                <div class="mt-4">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    PRODUCTIVITY • 5 MIN READ
+                  </p>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mt-2 group-hover:text-primary transition-colors"
+                  >
+                    The Solopreneur's Guide to Staying Focused
+                  </h3>
+                  <p
+                    class="text-background-dark/70 dark:text-background-light/70 mt-2"
+                  >
+                    Discover tips and tricks to maintain productivity when
+                    you're your own boss.
+                  </p>
+                </div>
+              </div>
+              <div class="group">
+                <div
+                  class="w-full aspect-video bg-cover bg-center rounded-xl overflow-hidden transform group-hover:scale-105 transition-transform duration-300"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4OLlHf2izWpBNAFGOXyrGFWhgXQlMlZMfOqH7RfaVjVW1OCfwRCvXqsbdDAsi6wDUB0tX00T3D0b15cB4_mziqJYPYWYZcptPU5qIha7I54PdLNuz6VnFdOYxK_DlQt8KcFyq026uCR6fI8NVyS7T4FIthnEGEnVRpJ8ypoOA4qKDWP8ebitk8j0TK6hsCDsVna5M8R7IaEb4FHtvb8GYSL4eX5KpBG468IVkraRFCNvVfgFi879Bw5JbeiPWvKRP8dWmNA5MNuqj');
+                  "
+                ></div>
+                <div class="mt-4">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    STARTUPS • 8 MIN READ
+                  </p>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mt-2 group-hover:text-primary transition-colors"
+                  >
+                    Navigating the Seed Funding Landscape in SEA
+                  </h3>
+                  <p
+                    class="text-background-dark/70 dark:text-background-light/70 mt-2"
+                  >
+                    An insider look at securing your first round of investment
+                    in Singapore and Malaysia.
+                  </p>
+                </div>
+              </div>
+              <div class="group">
+                <div
+                  class="w-full aspect-video bg-cover bg-center rounded-xl overflow-hidden transform group-hover:scale-105 transition-transform duration-300"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4OLlHf2izWpBNAFGOXyrGFWhgXQlMlZMfOqH7RfaVjVW1OCfwRCvXqsbdDAsi6wDUB0tX00T3D0b15cB4_mziqJYPYWYZcptPU5qIha7I54PdLNuz6VnFdOYxK_DlQt8KcFyq026uCR6fI8NVyS7T4FIthnEGEnVRpJ8ypoOA4qKDWP8ebitk8j0TK6hsCDsVna5M8R7IaEb4FHtvb8GYSL4eX5KpBG468IVkraRFCNvVfgFi879Bw5JbeiPWvKRP8dWmNA5MNuqj');
+                  "
+                ></div>
+                <div class="mt-4">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    REMOTE WORK • 6 MIN READ
+                  </p>
+                  <h3
+                    class="text-xl font-bold text-background-dark dark:text-background-light mt-2 group-hover:text-primary transition-colors"
+                  >
+                    Top 10 Tools for Asynchronous Collaboration
+                  </h3>
+                  <p
+                    class="text-background-dark/70 dark:text-background-light/70 mt-2"
+                  >
+                    How to work effectively with your team across different time
+                    zones.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="bg-forest-green dark:bg-forest-green/90">
+        <div class="container mx-auto px-6 py-12">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-8"
+          >
+            <div
+              class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-white/70"
+            >
+              <a class="hover:text-primary transition-colors" href="#">About</a>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Contact</a
+              >
+              <a class="hover:text-primary transition-colors" href="#"
+                >Terms of Service</a
+              >
+              <a class="hover:text-primary transition-colors" href="#"
+                >Privacy Policy</a
+              >
+            </div>
+            <div class="flex justify-center gap-4">
+              <a
+                class="text-white/70 hover:text-primary transition-colors"
+                href="#"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  viewBox="0 0 256 256"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                class="text-white/70 hover:text-primary transition-colors"
+                href="#"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  viewBox="0 0 256 256"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                class="text-white/70 hover:text-primary transition-colors"
+                href="#"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  viewBox="0 0 256 256"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div
+            class="mt-8 border-t border-white/10 pt-8 text-center text-sm text-white/50"
+          >
+            <p>© 2024 PerkPal. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
