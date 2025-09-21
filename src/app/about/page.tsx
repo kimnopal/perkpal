@@ -1,3 +1,6 @@
+// At the top of your page.tsx file
+export const dynamic = "force-dynamic";
+
 import React from "react";
 import { FAQ } from "@/types";
 import FAQSection from "../components/FAQSection";
@@ -20,7 +23,9 @@ interface AboutPageResponse {
 async function getAboutPageData(): Promise<AboutPageData> {
   try {
     const url = `${process.env.NEXT_PUBLIC_API_URL}/about-page?populate=*`;
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      cache: "no-store",
+    });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch about page data: ${response.status}`);

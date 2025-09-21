@@ -11,7 +11,9 @@ interface ContactPageResponse {
 
 async function getContactPageData(): Promise<ContactPageData> {
   const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-page?populate=*`;
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    cache: "no-store",
+  });
   const data: ContactPageResponse = await response.json();
   return data.data;
 }

@@ -54,7 +54,9 @@ export default function PerksPage() {
         url += `&filters[sub_category][slug][$eq]=${subCategorySlug}`;
       }
 
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        cache: "no-store",
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -80,7 +82,10 @@ export default function PerksPage() {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/categories?populate=sub_categories`
+          `${process.env.NEXT_PUBLIC_API_URL}/categories?populate=sub_categories`,
+          {
+            cache: "no-store",
+          }
         );
 
         if (!response.ok) {

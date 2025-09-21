@@ -1,3 +1,6 @@
+// At the top of your page.tsx file
+export const dynamic = "force-dynamic";
+
 import { Perk } from "@/types";
 
 interface HeroCard {
@@ -26,7 +29,9 @@ async function getHomePageData(): Promise<HeroSection> {
   try {
     const url = `${process.env.NEXT_PUBLIC_API_URL}/home-page?populate[Hero][populate]=*`;
 
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      cache: "no-store",
+    });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch home page data: ${response.status}`);
@@ -64,7 +69,9 @@ interface PerksResponse {
 async function getLatestPerks(): Promise<Perk[]> {
   const url = `${process.env.NEXT_PUBLIC_API_URL}/perks?populate=*&category=*&sort=id:desc&pagination[limit]=3`;
 
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    cache: "no-store",
+  });
 
   const data: PerksResponse = await response.json();
 
