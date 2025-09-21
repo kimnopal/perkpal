@@ -20,9 +20,7 @@ interface AboutPageResponse {
 async function getAboutPageData(): Promise<AboutPageData> {
   try {
     const url = `${process.env.NEXT_PUBLIC_API_URL}/about-page?populate=*`;
-    const response = await fetch(url, {
-      cache: "no-store", // Ensures fresh data on each request
-    });
+    const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch about page data: ${response.status}`);

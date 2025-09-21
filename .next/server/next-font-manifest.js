@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/home/naotheone/Documents/Developments/NEXTJS/perkpal/src/app/layout":["static/media/c9e6921c7fc300d8-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';

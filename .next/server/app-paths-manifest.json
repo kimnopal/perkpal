@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/contact/page": "app/contact/page.js",
+  "/journals/page": "app/journals/page.js",
+  "/page": "app/page.js",
+  "/partner-with-us/page": "app/partner-with-us/page.js",
+  "/perks/page": "app/perks/page.js",
+  "/submit-perk/page": "app/submit-perk/page.js",
+  "/terms-of-service/page": "app/terms-of-service/page.js",
+  "/about/page": "app/about/page.js"
+}
