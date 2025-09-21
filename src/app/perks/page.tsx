@@ -42,7 +42,7 @@ export default function PerksPage() {
   ) => {
     try {
       setPerksLoading(true);
-      let url = "http://localhost:1337/api/perks?populate=*";
+      let url = `${process.env.NEXT_PUBLIC_API_URL}/perks?populate=*`;
 
       // Add category filter if not "all"
       if (categorySlug && categorySlug !== "all") {
@@ -80,7 +80,7 @@ export default function PerksPage() {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "http://localhost:1337/api/categories?populate=sub_categories"
+          `${process.env.NEXT_PUBLIC_API_URL}/categories?populate=sub_categories`
         );
 
         if (!response.ok) {
