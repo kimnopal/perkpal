@@ -30,6 +30,54 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/partner-with-us": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/partner-with-us",
+      "dataRoute": "/partner-with-us.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/journals": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/journals",
+      "dataRoute": "/journals.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/_not-found": {
       "initialStatus": 404,
       "experimentalBypassFor": [
@@ -46,30 +94,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/_not-found",
       "dataRoute": "/_not-found.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/submit-perk": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/submit-perk",
-      "dataRoute": "/submit-perk.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -103,30 +127,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/partner-with-us": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/partner-with-us",
-      "dataRoute": "/partner-with-us.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/perks": {
       "experimentalBypassFor": [
         {
@@ -151,7 +151,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/journals": {
+    "/submit-perk": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -164,8 +164,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/journals",
-      "dataRoute": "/journals.rsc",
+      "srcRoute": "/submit-perk",
+      "dataRoute": "/submit-perk.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -179,8 +179,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "bb8f38194af517a3ad26377bb207e960",
-    "previewModeSigningKey": "a366f729a4f59e7ad60f32e8175f07f482c113295636979d3e24c5d5969d918a",
-    "previewModeEncryptionKey": "cbfee3288795b2f7325f863b284d7ad81c85083a8afa320e1fe5ae32fab67653"
+    "previewModeId": "de34cf654509eda9a23079c45894d025",
+    "previewModeSigningKey": "80b43abd04a21d8a2c659880fddeafaa720719d4d9ce7cf1ba19107eac1da478",
+    "previewModeEncryptionKey": "ca2c54fd615ffa0ece1cba7aaa50fdc83da111c2fcf290331a119d7b0765ebf5"
   }
 }
