@@ -79,3 +79,8 @@ export interface FAQ {
   title: string;
   description: string;
 }
+
+export interface SEO {
+  meta_title: string;
+  meta_description: string;
+}

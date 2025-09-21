@@ -1,8 +1,12 @@
-import React from "react";
+export const dynamic = "force-dynamic";
+
+import { SEO } from "@/types";
+import { Metadata } from "next";
 
 interface ContactPageData {
   title: string;
   subtitle: string;
+  SEO: SEO;
 }
 
 interface ContactPageResponse {
@@ -10,12 +14,50 @@ interface ContactPageResponse {
 }
 
 async function getContactPageData(): Promise<ContactPageData> {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-page?populate=*`;
-  const response = await fetch(url, {
-    cache: "no-store",
-  });
-  const data: ContactPageResponse = await response.json();
-  return data.data;
+  try {
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-page?populate=*`;
+    const response = await fetch(url, {
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch contact page data: ${response.status}`);
+    }
+
+    const responseData: ContactPageResponse = await response.json();
+    return responseData.data;
+  } catch (error) {
+    console.error("Error fetching contact page data:", error);
+    // Return fallback data in case of error
+    return {
+      title: "Contact Us",
+      subtitle: "Get in touch with our team. We'd love to hear from you!",
+      SEO: {
+        meta_title: "Contact Us",
+        meta_description:
+          "Get in touch with our team. We'd love to hear from you!",
+      },
+    };
+  }
+}
+
+// Generate dynamic metadata
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const contactPageData = await getContactPageData();
+
+    return {
+      title: contactPageData.SEO.meta_title,
+      description: contactPageData.SEO.meta_description,
+    };
+  } catch (error) {
+    console.error("Error generating metadata for contact page:", error);
+    // Return fallback metadata
+    return {
+      title: "Contact Us",
+      description: "Get in touch with our team. We'd love to hear from you!",
+    };
+  }
 }
 
 export default async function ContactPage() {

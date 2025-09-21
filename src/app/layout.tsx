@@ -11,7 +11,10 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "PerkPal - Supercharge Your Hustle",
+  title: {
+    template: "%s - PerkPal",
+    default: "PerkPal - Supercharge Your Hustle",
+  },
   description:
     "Exclusive perks for Malaysia & Singapore's top founders, freelancers, solopreneurs, and remote workers. Save big on tools that grow your business.",
 };
@@ -35,7 +38,6 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
           rel="stylesheet"
         />
-        <title>PerkPal</title>
         <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
       </head>
       <body className="bg-white dark:bg-background-dark font-display text-background-dark dark:text-background-light">

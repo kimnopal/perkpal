@@ -1,4 +1,23 @@
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Journal",
+  description:
+    "Stay up-to-date with the latest news, tips, and insights for founders, freelancers, solopreneurs, and remote workers in Malaysia and Singapore.",
+  openGraph: {
+    title: "Journal - PerkPal",
+    description:
+      "Stay up-to-date with the latest news, tips, and insights for founders, freelancers, solopreneurs, and remote workers in Malaysia and Singapore.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Journal - PerkPal",
+    description:
+      "Stay up-to-date with the latest news, tips, and insights for founders, freelancers, solopreneurs, and remote workers in Malaysia and Singapore.",
+  },
+};
 
 export default function JournalsPage() {
   return (

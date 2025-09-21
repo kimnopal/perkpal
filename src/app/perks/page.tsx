@@ -2,6 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { Category, SubCategory, Perk } from "../../types";
+import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//   title: "Perks",
+//   description: "Perks",
+// };
 
 interface CategoriesResponse {
   data: Category[];
@@ -26,6 +32,36 @@ interface PerksResponse {
     };
   };
 }
+
+// async function getPerksPageData(): Promise<PerksResponse> {
+//   const url = `${process.env.NEXT_PUBLIC_API_URL}/perks?populate=*`;
+
+//   const response = await fetch(url, {
+//     cache: "no-store",
+//   });
+
+//   const responseData: PerksResponse = await response.json();
+
+//   return responseData;
+// }
+
+// export async function generateMetadata(): Promise<Metadata> {
+//   try {
+//     const { data } = await getPerksPageData();
+
+//     return {
+//       title: data.SEO.meta_title,
+//       description: data.SEO.meta_description,
+//     };
+//   } catch (error) {
+//     console.error("Error generating metadata:", error);
+//     // Return fallback metadata
+//     return {
+//       title: "Welcome to PerkPal",
+//       description: "Discover exclusive perks and benefits for your business",
+//     };
+//   }
+// }
 
 export default function PerksPage() {
   const [categories, setCategories] = useState<Category[]>([]);

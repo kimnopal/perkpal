@@ -2,7 +2,8 @@
 export const dynamic = "force-dynamic";
 
 import React from "react";
-import { FAQ } from "@/types";
+import { Metadata } from "next";
+import { FAQ, SEO } from "@/types";
 import FAQSection from "../components/FAQSection";
 
 interface AboutPageData {
@@ -14,6 +15,7 @@ interface AboutPageData {
     url: string;
   };
   FAQ: FAQ[];
+  SEO: SEO;
 }
 
 interface AboutPageResponse {
@@ -31,8 +33,8 @@ async function getAboutPageData(): Promise<AboutPageData> {
       throw new Error(`Failed to fetch about page data: ${response.status}`);
     }
 
-    const data: AboutPageResponse = await response.json();
-    return data.data;
+    const responseData: AboutPageResponse = await response.json();
+    return responseData.data;
   } catch (error) {
     console.error("Error fetching about page data:", error);
     // Return fallback data in case of error
@@ -46,6 +48,31 @@ async function getAboutPageData(): Promise<AboutPageData> {
         url: "/placeholder-about.jpg",
       },
       FAQ: [],
+      SEO: {
+        meta_title: "About PerkPal",
+        meta_description:
+          "Empowering independent professionals with exclusive perks and community",
+      },
+    };
+  }
+}
+
+// Generate dynamic metadata
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const aboutPageData = await getAboutPageData();
+
+    return {
+      title: aboutPageData.SEO.meta_title,
+      description: aboutPageData.SEO.meta_description,
+    };
+  } catch (error) {
+    console.error("Error generating metadata for about page:", error);
+    // Return fallback metadata
+    return {
+      title: "About PerkPal",
+      description:
+        "Empowering independent professionals with exclusive perks and community",
     };
   }
 }

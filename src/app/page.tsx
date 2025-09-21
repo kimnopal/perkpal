@@ -1,7 +1,8 @@
 // At the top of your page.tsx file
 export const dynamic = "force-dynamic";
 
-import { Perk } from "@/types";
+import { Metadata } from "next";
+import { Perk, SEO } from "@/types";
 
 interface HeroCard {
   title: string;
@@ -19,15 +20,17 @@ interface HeroSection {
   HeroCard: HeroCard[];
 }
 
-interface ApiHomePageResponse {
+interface HomePageResponse {
   data: {
     Hero: HeroSection;
+    SEO: SEO;
   };
 }
 
-async function getHomePageData(): Promise<HeroSection> {
+async function getHomePageData(): Promise<HomePageResponse> {
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/home-page?populate[Hero][populate]=*`;
+    // const url = `${process.env.NEXT_PUBLIC_API_URL}/home-page?populate[Hero][populate]=*`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/home-page?populate[Hero][populate]=*&populate[SEO]=*`;
 
     const response = await fetch(url, {
       cache: "no-store",
@@ -37,27 +40,49 @@ async function getHomePageData(): Promise<HeroSection> {
       throw new Error(`Failed to fetch home page data: ${response.status}`);
     }
 
-    const responseData: ApiHomePageResponse = await response.json();
+    const responseData: HomePageResponse = await response.json();
 
-    return responseData.data.Hero;
+    return responseData;
     // return data;
   } catch (error) {
     console.error("Error fetching home page data:", error);
     // Return fallback data in case of error
     return {
-      title: "Welcome to PerkPal",
-      subtitle: "Discover exclusive perks and benefits for your business",
-      image: {
-        url: "",
-        alternativeText: "PerkPal Hero Image",
-        caption: null,
+      data: {
+        Hero: {
+          title: "Welcome to PerkPal",
+          subtitle: "Discover exclusive perks and benefits for your business",
+          image: {
+            url: "",
+            alternativeText: "PerkPal Hero Image",
+            caption: null,
+          },
+          HeroCard: [],
+        },
+        SEO: {
+          meta_title: "Welcome to PerkPal",
+          meta_description:
+            "Discover exclusive perks and benefits for your business",
+        },
       },
-      HeroCard: [
-        { title: "Exclusive Deals", subtitle: "Access unique offers" },
-        { title: "Easy Redemption", subtitle: "Simple process" },
-        { title: "Business Growth", subtitle: "Scale your venture" },
-        { title: "Community Support", subtitle: "Connect with peers" },
-      ],
+    };
+  }
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const { data } = await getHomePageData();
+
+    return {
+      title: data.SEO.meta_title,
+      description: data.SEO.meta_description,
+    };
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    // Return fallback metadata
+    return {
+      title: "Welcome to PerkPal",
+      description: "Discover exclusive perks and benefits for your business",
     };
   }
 }
@@ -73,15 +98,14 @@ async function getLatestPerks(): Promise<Perk[]> {
     cache: "no-store",
   });
 
-  const data: PerksResponse = await response.json();
+  const responseData: PerksResponse = await response.json();
 
-  return data.data;
+  return responseData.data;
 }
 
 export default async function HomePage() {
-  const heroSection = await getHomePageData();
+  const { data } = await getHomePageData();
   const latestPerks = await getLatestPerks();
-  console.log(latestPerks);
 
   return (
     <>
@@ -90,10 +114,10 @@ export default async function HomePage() {
         <div className="container mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
           <div className="text-left flex flex-col items-start gap-6 md:pr-10">
             <h1 className="text-4xl md:text-6xl font-black tracking-tighter max-w-xl">
-              {heroSection.title}
+              {data.Hero.title}
             </h1>
             <p className="text-base md:text-lg max-w-xl text-background-dark/80 dark:text-background-light/80">
-              {heroSection.subtitle}
+              {data.Hero.subtitle}
             </p>
             <div className="flex flex-wrap justify-start gap-4 mt-4">
               <a
@@ -112,47 +136,47 @@ export default async function HomePage() {
           </div>
           <div className="relative w-full max-w-lg mx-auto md:mx-0 justify-self-end">
             <img
-              alt={heroSection.image.alternativeText || "Hero Image"}
+              alt={data.Hero.image.alternativeText || "Hero Image"}
               className="rounded-full aspect-square object-cover"
-              src={`${process.env.NEXT_PUBLIC_APP_URL}${heroSection.image.url}`}
+              src={`${process.env.NEXT_PUBLIC_APP_URL}${data.Hero.image.url}`}
             />
             <div className="absolute top-0 -left-10 transform -translate-x-1/4 -translate-y-1/4 animate-float">
               <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
                 <p className="font-bold text-sm">
-                  {heroSection?.HeroCard[0].title}
+                  {data.Hero?.HeroCard[0].title}
                 </p>
                 <p className="text-xs text-gray-500">
-                  {heroSection?.HeroCard[0].subtitle}
+                  {data.Hero?.HeroCard[0].subtitle}
                 </p>
               </div>
             </div>
             <div className="absolute top-10 right-0 transform translate-x-1/4 -translate-y-1/2 animate-float animation-delay-1000">
               <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
                 <p className="font-bold text-sm">
-                  {heroSection?.HeroCard[1].title}
+                  {data.Hero?.HeroCard[1].title}
                 </p>
                 <p className="text-xs text-gray-500">
-                  {heroSection?.HeroCard[1].subtitle}
+                  {data.Hero?.HeroCard[1].subtitle}
                 </p>
               </div>
             </div>
             <div className="absolute bottom-20 -right-12 transform translate-x-1/2 translate-y-1/2 animate-float animation-delay-2000">
               <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
                 <p className="font-bold text-sm">
-                  {heroSection?.HeroCard[2].title}
+                  {data.Hero?.HeroCard[2].title}
                 </p>
                 <p className="text-xs text-gray-500">
-                  {heroSection?.HeroCard[2].subtitle}
+                  {data.Hero?.HeroCard[2].subtitle}
                 </p>
               </div>
             </div>
             <div className="absolute bottom-5 left-0 transform -translate-x-1/2 translate-y-1/4 animate-float animation-delay-3000">
               <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
                 <p className="font-bold text-sm">
-                  {heroSection?.HeroCard[3].title}
+                  {data.Hero?.HeroCard[3].title}
                 </p>
                 <p className="text-xs text-gray-500">
-                  {heroSection?.HeroCard[3].subtitle}
+                  {data.Hero?.HeroCard[3].subtitle}
                 </p>
               </div>
             </div>
