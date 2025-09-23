@@ -1,3 +1,25 @@
+export interface Image {
+  url: string;
+  alternativeText: string;
+  caption: string;
+  width: number;
+  height: number;
+  formats: {
+    small: {
+      url: string;
+    };
+    medium: {
+      url: string;
+    };
+    large: {
+      url: string;
+    };
+    thumbnail: {
+      url: string;
+    };
+  };
+}
+
 export interface PerkLogo {
   url: string;
   alternativeText: string;
@@ -83,4 +105,31 @@ export interface FAQ {
 export interface SEO {
   meta_title: string;
   meta_description: string;
+}
+
+export interface Navbar {
+  NavItem: NavItem[];
+}
+
+export interface NavItem {
+  title: string;
+  href: string;
+}
+
+export interface NavIcon {
+  icon: Image;
+  href: string;
+}
+
+export interface Footer {
+  icon: Image;
+  description: string;
+  FooterNav: FooterNav[];
+  NavIcon: NavIcon[];
+  copyright: string;
+}
+
+export interface FooterNav {
+  header: string;
+  NavItem: NavItem[];
 }

@@ -1,6 +1,25 @@
+import { Footer as FooterType } from "@/types";
 import React from "react";
 
-export default function Footer() {
+interface FooterResponse {
+  data: FooterType;
+}
+
+const getFooterData = async (): Promise<FooterType> => {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/footer?populate=*`;
+  const response = await fetch(url, {
+    cache: "no-store",
+  });
+
+  const data: FooterResponse = await response.json();
+
+  return data.data;
+};
+
+export default async function Footer() {
+  const footer = await getFooterData();
+  console.log(footer);
+
   return (
     <footer className="bg-luxury-green text-white py-12 md:py-16 px-4 md:px-10">
       <div className="container mx-auto">

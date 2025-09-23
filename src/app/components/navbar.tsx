@@ -1,7 +1,27 @@
+import { Navbar as NavbarType } from "@/types";
 import Link from "next/link";
 import React from "react";
 
-export default function Navbar() {
+interface NavbarResponse {
+  data: NavbarType;
+}
+
+async function getNavbarData(): Promise<NavbarType> {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/navbar?populate=*`;
+
+  const response = await fetch(url, {
+    cache: "no-store",
+  });
+
+  const data: NavbarResponse = await response.json();
+
+  return data.data;
+}
+
+export default async function Navbar() {
+  const navbar = await getNavbarData();
+  console.log(navbar);
+
   return (
     <header className="bg-forest-green dark:bg-forest-green/90">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between whitespace-nowrap">
@@ -20,7 +40,16 @@ export default function Navbar() {
           <h2 className="text-xl font-bold">PerkPal</h2>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
-          <Link className="hover:text-primary transition-colors" href="/">
+          {navbar.NavItem?.map((item, index) => (
+            <Link
+              key={index}
+              className="hover:text-primary transition-colors"
+              href={item.href}
+            >
+              {item.title}
+            </Link>
+          ))}
+          {/* <Link className="hover:text-primary transition-colors" href="/">
             Home
           </Link>
           <Link className="hover:text-primary transition-colors" href="/perks">
@@ -40,7 +69,7 @@ export default function Navbar() {
           </Link>
           <Link className="hover:text-primary transition-colors" href="/about">
             About Us
-          </Link>
+          </Link> */}
         </nav>
         <div className="flex items-center gap-2">
           <Link
