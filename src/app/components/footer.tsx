@@ -1,4 +1,5 @@
 import { Footer as FooterType } from "@/types";
+import Image from "next/image";
 import React from "react";
 
 interface FooterResponse {
@@ -6,7 +7,7 @@ interface FooterResponse {
 }
 
 const getFooterData = async (): Promise<FooterType> => {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/footer?populate=*`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/footer?populate[icon]=true&populate[FooterNav][populate][NavItem][populate]=*&populate[NavIcon][populate]=*`;
   const response = await fetch(url, {
     cache: "no-store",
   });
@@ -18,7 +19,6 @@ const getFooterData = async (): Promise<FooterType> => {
 
 export default async function Footer() {
   const footer = await getFooterData();
-  console.log(footer);
 
   return (
     <footer className="bg-luxury-green text-white py-12 md:py-16 px-4 md:px-10">
@@ -26,175 +26,58 @@ export default async function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-4">
             <div className="flex items-center gap-4 mb-4">
-              <div className="size-10 text-white">
-                <svg
-                  fill="none"
-                  viewBox="0 0 48 48"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold">PerkPal</h2>
+              <Image
+                src={process.env.NEXT_PUBLIC_APP_URL + footer?.icon?.url}
+                alt={footer?.icon?.alternativeText ?? "Footer Image"}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-36 h-auto"
+              />
             </div>
-            <p className="text-white/80 pr-8">
-              Empowering the independent workforce in Southeast Asia.
-            </p>
+            <p className="text-white/80 pr-8">{footer?.description}</p>
           </div>
           <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">
-                Platform
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/perks"
-                  >
-                    Perks
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/perks"
-                  >
-                    SAAS/AI Tools
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/perks"
-                  >
-                    Lifestyle
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/about"
-                  >
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/partner-with-us"
-                  >
-                    Partner With Us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/journals"
-                  >
-                    Journal
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Support</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/terms-of-service"
-                  >
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/privacy-policy"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
-                    href="/contact"
-                  >
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {footer?.FooterNav?.map((nav, index) => (
+              <div key={index}>
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  {nav.nav_header}
+                </h3>
+                <ul className="space-y-2">
+                  {nav.NavItem?.map((item, index) => (
+                    <li key={index}>
+                      <a
+                        className="text-white/80 hover:text-yellow-400 transition-colors"
+                        href={item.link.href}
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
         <div className="my-8 flex justify-center items-center">
           <div className="flex items-center space-x-6">
-            <a
-              className="text-white/80 hover:text-yellow-400 transition-colors"
-              href="/"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+            {footer?.NavIcon?.map((icon, index) => (
+              <a
+                key={index}
+                className="text-white/80 hover:text-yellow-400 transition-colors"
+                href={icon?.link.href}
               >
-                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 0 .14.02.2.04.07.03.11.06.16.1.24.18.39.4.5.64.05.11.08.23.08.34v15.1c0 .24-.05.48-.14.71-.12.31-.3.58-.55.8-.23.2-.5.35-.8.45-.35.1-.7.15-1.07.15-.11 0-.22 0-.33-.02-.3-.04-.59-.14-.87-.28-.31-.17-.6-.38-.86-.62-.25-.24-.48-.5-.68-.78-.2-.29-.38-.59-.53-.9-.16-.3-.29-.62-.4-.94-.12-.34-.21-.68-.28-1.03-.02-.09-.04-.18-.04-.27V.99c0-.28.05-.55.15-.81.1-.25.25-.48.45-.66.23-.21.5-.37.8-.48.16-.06.33-.1.5-.12.18-.02.36-.03.55-.03Zm3.9 1.54c-.21 0-.41-.01-.62-.01-1.12 0-2.24.01-3.36 0-1.37 0-2.45.92-2.6 2.27-.05.47-.02.95.06 1.42.06.36.14.71.24 1.06.1.34.22.68.36 1.01.14.33.3.65.48.96.19.32.4.62.64.9.28.32.59.6.93.84.37.25.77.44 1.19.58.41.13.84.2 1.28.21.9.01 1.74-.43 2.25-1.2.24-.37.39-.79.45-1.22.06-.43.08-.86.08-1.29V3.52c-.01-.5-.13-.97-.37-1.38-.2-.34-.5-.61-.85-.78-.2-.1-.42-.14-.64-.16-.2-.02-.4-.02-.6-.02Z"></path>
-              </svg>
-            </a>
-            <a
-              className="text-white/80 hover:text-yellow-400 transition-colors"
-              href="/"
-            >
-              <svg
-                aria-hidden="true"
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
-              </svg>
-            </a>
-            <a
-              className="text-white/80 hover:text-yellow-400 transition-colors"
-              href="/"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919C8.415 2.175 8.796 2.163 12 2.163m0-1.84c-3.27 0-3.66.014-4.944.072C2.694.59 1.259 2.025.932 4.418.86 5.698.847 6.082.847 12s.013 6.302.085 7.582c.327 2.392 1.763 3.828 4.156 4.156 1.28.058 1.673.072 4.944.072s3.665-.014 4.944-.072c2.392-.328 3.828-1.763 4.156-4.156.072-1.28.085-1.673.085-4.944s-.013-3.665-.085-4.944c-.328-2.392-1.763-3.828-4.156-4.156C15.665.334 15.27.323 12 .323m0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324M12 16a4 4 0 110-8 4 4 0 010 8m6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88"></path>
-              </svg>
-            </a>
-            <a
-              className="text-white/80 hover:text-yellow-400 transition-colors"
-              href="/"
-            >
-              <svg
-                aria-hidden="true"
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8.5 18H6.5V9h2v9zm-1-10.5A1.5 1.5 0 116 6a1.5 1.5 0 011.5 1.5zM18 18h-2v-4.5c0-1.036-.019-2.369-1.5-2.369-1.481 0-1.71 1.157-1.71 2.294V18h-2V9h1.9v.9h.027a2.01 2.01 0 011.853-1.026c1.98 0 2.344 1.304 2.344 3.001V18z"></path>
-              </svg>
-            </a>
+                <div
+                  className="size-6"
+                  dangerouslySetInnerHTML={{ __html: icon.icon }}
+                />
+              </a>
+            ))}
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-white/20 flex flex-col items-center justify-between">
           <p className="text-sm text-white/60 text-center mb-4">
-            © 2023 PerkPal. All rights reserved.
+            {footer?.copyright}
           </p>
         </div>
       </div>

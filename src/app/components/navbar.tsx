@@ -7,7 +7,7 @@ interface NavbarResponse {
 }
 
 async function getNavbarData(): Promise<NavbarType> {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/navbar?populate=*`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/navbar?populate[NavItem][populate]=*`;
 
   const response = await fetch(url, {
     cache: "no-store",
@@ -20,8 +20,6 @@ async function getNavbarData(): Promise<NavbarType> {
 
 export default async function Navbar() {
   const navbar = await getNavbarData();
-  console.log(navbar);
-
   return (
     <header className="bg-forest-green dark:bg-forest-green/90">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between whitespace-nowrap">
@@ -44,7 +42,7 @@ export default async function Navbar() {
             <Link
               key={index}
               className="hover:text-primary transition-colors"
-              href={item.href}
+              href={item.link.href}
             >
               {item.title}
             </Link>

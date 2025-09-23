@@ -107,18 +107,22 @@ export interface SEO {
   meta_description: string;
 }
 
+export interface Link {
+  href: string;
+}
+
 export interface Navbar {
   NavItem: NavItem[];
 }
 
 export interface NavItem {
   title: string;
-  href: string;
+  link: Link;
 }
 
 export interface NavIcon {
-  icon: Image;
-  href: string;
+  icon: string; // SVG markup, image URL, or class name
+  link: Link;
 }
 
 export interface Footer {
@@ -130,6 +134,6 @@ export interface Footer {
 }
 
 export interface FooterNav {
-  header: string;
+  nav_header: string;
   NavItem: NavItem[];
 }
