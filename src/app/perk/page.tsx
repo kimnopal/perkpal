@@ -63,7 +63,7 @@ interface PerksResponse {
 //   }
 // }
 
-export default function PerksPage() {
+export default function PerkPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [perks, setPerks] = useState<Perk[]>([]);
   const [loading, setLoading] = useState(true);

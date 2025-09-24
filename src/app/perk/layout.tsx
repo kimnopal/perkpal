@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PerksLayout({
+export default function PerkLayout({
   children,
 }: {
   children: React.ReactNode;
