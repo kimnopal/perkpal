@@ -25,11 +25,9 @@ export default function JournalPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [loading, setLoading] = useState(true);
-  const [journalsLoading, setJournalsLoading] = useState(false);
 
   const fetchJournals = async (categorySlug?: string) => {
     try {
-      setJournalsLoading(true);
       let url = `${process.env.NEXT_PUBLIC_API_URL}/journals?populate=*`;
 
       // Add category filter if not "all"
@@ -50,8 +48,6 @@ export default function JournalPage() {
     } catch (error) {
       console.error("Error fetching journals:", error);
       setJournals([]);
-    } finally {
-      setJournalsLoading(false);
     }
   };
 
@@ -185,25 +181,6 @@ export default function JournalPage() {
           </div>
 
           {/* Journal Grid */}
-          {/* {journalsLoading ? (
-            // Loading skeleton
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {[...Array(6)].map((_, index) => (
-                <div
-                  key={index}
-                  className="bg-background-light dark:bg-background-dark rounded-xl shadow-lg animate-pulse"
-                >
-                  <div className="h-48 bg-background-dark/10 dark:bg-background-light/10 rounded-t-xl"></div>
-                  <div className="p-6">
-                    <div className="h-6 bg-background-dark/10 dark:bg-background-light/10 rounded mb-2"></div>
-                    <div className="h-4 bg-background-dark/10 dark:bg-background-light/10 rounded mb-2"></div>
-                    <div className="h-4 bg-background-dark/10 dark:bg-background-light/10 rounded mb-4 w-3/4"></div>
-                    <div className="h-10 bg-background-dark/10 dark:bg-background-light/10 rounded"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) :  */}
           {journals.length > 0 ? (
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {journals.map((journal) => (

@@ -4,12 +4,13 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
-      {
-        protocol: new URL(process.env.NEXT_PUBLIC_IMAGE_URL || "http://localhost:1337").protocol.slice(0, -1) as "http" | "https",
-        hostname: new URL(process.env.NEXT_PUBLIC_IMAGE_URL || "http://localhost:1337").hostname,
-        port: new URL(process.env.NEXT_PUBLIC_IMAGE_URL || "http://localhost:1337").port || "",
-        pathname: "/**",
-      },
+      new URL(process.env.NEXT_PUBLIC_IMAGE_URL || "http://localhost:1337"),
+      // {
+      //   protocol: new URL(process.env.NEXT_PUBLIC_IMAGE_URL || "http://localhost:1337").protocol.slice(0, -1) as "http" | "https",
+      //   hostname: new URL(process.env.NEXT_PUBLIC_IMAGE_URL || "http://localhost:1337").hostname,
+      //   port: new URL(process.env.NEXT_PUBLIC_IMAGE_URL || "http://localhost:1337").port || "",
+      //   pathname: "/**",
+      // },
     ],
     // Alternative static configuration:
     // remotePatterns: [
@@ -20,7 +21,7 @@ const nextConfig: NextConfig = {
     //     pathname: '/**'
     //   }
     // ],
-  }
+  },
 };
 
 export default nextConfig;
