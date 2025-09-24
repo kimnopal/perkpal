@@ -57,7 +57,7 @@ export default function JournalCard({
 }: JournalCardProps) {
   const readTime = calculateReadTime(journal.content);
   const imageUrl = `${process.env.NEXT_PUBLIC_APP_URL}${journal.banner.url}`;
-  console.log(journal);
+
   if (isFeatured) {
     return (
       <div className="group flex flex-col md:flex-row overflow-hidden rounded-xl bg-white shadow-lg transition-all hover:shadow-2xl dark:bg-background-dark/50 dark:shadow-primary/10 dark:hover:shadow-primary/20 transform hover:-translate-y-1 duration-300">
