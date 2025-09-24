@@ -185,7 +185,7 @@ export default function JournalPage() {
           </div>
 
           {/* Journal Grid */}
-          {journalsLoading ? (
+          {/* {journalsLoading ? (
             // Loading skeleton
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {[...Array(6)].map((_, index) => (
@@ -203,7 +203,8 @@ export default function JournalPage() {
                 </div>
               ))}
             </div>
-          ) : journals.length > 0 ? (
+          ) :  */}
+          {journals.length > 0 ? (
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {journals.map((journal) => (
                 <JournalCard key={journal.id} journal={journal} />
