@@ -2,27 +2,38 @@ import { Journal } from "@/types";
 import Link from "next/link";
 import React from "react";
 
-function calculateReadTime(content: any[]): number {
+function calculateReadTime(content: string): number {
   const wordsPerMinute = 200;
-  let totalWords = 0;
 
-  const countWords = (nodes: any[]): number => {
-    return nodes.reduce((count, node) => {
-      if (node.children) {
-        return count + countWords(node.children);
-      }
-      if (node.text) {
-        return (
-          count +
-          node.text.split(/\s+/).filter((word: string) => word.length > 0)
-            .length
-        );
-      }
-      return count;
-    }, 0);
-  };
+  // Remove markdown syntax and HTML tags to get plain text
+  const plainText = content
+    // Remove code blocks
+    .replace(/```[\s\S]*?```/g, "")
+    // Remove inline code
+    .replace(/`[^`]*`/g, "")
+    // Remove HTML tags
+    .replace(/<[^>]*>/g, "")
+    // Remove markdown headers
+    .replace(/^#{1,6}\s+/gm, "")
+    // Remove markdown links but keep the text
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    // Remove markdown bold/italic
+    .replace(/\*\*([^*]*)\*\*/g, "$1")
+    .replace(/\*([^*]*)\*/g, "$1")
+    .replace(/__([^_]*)__/g, "$1")
+    .replace(/_([^_]*)_/g, "$1")
+    // Remove strikethrough
+    .replace(/~~([^~]*)~~/g, "$1")
+    // Remove list markers
+    .replace(/^\s*[-*+]\s+/gm, "")
+    .replace(/^\s*\d+\.\s+/gm, "")
+    // Remove extra whitespace
+    .replace(/\s+/g, " ")
+    .trim();
 
-  totalWords = countWords(content);
+  const words = plainText.split(/\s+/).filter((word) => word.length > 0);
+  const totalWords = words.length;
+
   return Math.max(1, Math.ceil(totalWords / wordsPerMinute));
 }
 
@@ -44,7 +55,7 @@ export default function JournalCard({
   journal,
   isFeatured = false,
 }: JournalCardProps) {
-  const readTime = 0;
+  const readTime = calculateReadTime(journal.content);
   const imageUrl = `${process.env.NEXT_PUBLIC_APP_URL}${journal.banner.url}`;
   console.log(journal);
   if (isFeatured) {
