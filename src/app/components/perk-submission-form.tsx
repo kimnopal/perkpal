@@ -10,7 +10,6 @@ interface PerkFormData {
   shortDescription: string;
   longDescription: string;
   redemptionMethod: "affiliate_link" | "coupon_code" | "form_submission";
-  redemptionValue: string;
 }
 
 export default function PerkSubmissionForm() {
@@ -21,7 +20,6 @@ export default function PerkSubmissionForm() {
     shortDescription: "",
     longDescription: "",
     redemptionMethod: "affiliate_link",
-    redemptionValue: "",
   });
 
   const [previewImage, setPreviewImage] = useState<string>("");
@@ -94,7 +92,6 @@ export default function PerkSubmissionForm() {
           long_description: formData.longDescription,
           vendor_name: formData.vendorName,
           redemption_method: formData.redemptionMethod,
-          redemption_value: formData.redemptionValue,
           featured: false,
           valid_from: new Date().toISOString(),
           valid_to: null,
@@ -129,7 +126,6 @@ export default function PerkSubmissionForm() {
         shortDescription: "",
         longDescription: "",
         redemptionMethod: "affiliate_link",
-        redemptionValue: "",
       });
       setPreviewImage("");
 
@@ -383,36 +379,6 @@ export default function PerkSubmissionForm() {
                 </label>
               </div>
             </div>
-          </div>
-
-          {/* Redemption Value */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-background-dark dark:text-background-light mb-2">
-              Redemption Value *
-            </label>
-            <input
-              type="text"
-              name="redemptionValue"
-              value={formData.redemptionValue}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 border border-background-dark/20 dark:border-background-light/20 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-background-dark text-background-dark dark:text-background-light placeholder-background-dark/50 dark:placeholder-background-light/50"
-              placeholder={
-                formData.redemptionMethod === "affiliate_link"
-                  ? "https://example.com/affiliate-link"
-                  : formData.redemptionMethod === "coupon_code"
-                  ? "PERKPAL50"
-                  : "Contact email or form URL"
-              }
-            />
-            <p className="mt-1 text-xs text-background-dark/50 dark:text-background-light/50">
-              {formData.redemptionMethod === "affiliate_link" &&
-                "Enter the affiliate or referral link"}
-              {formData.redemptionMethod === "coupon_code" &&
-                "Enter the coupon or promo code"}
-              {formData.redemptionMethod === "form_submission" &&
-                "Enter contact email or form submission URL"}
-            </p>
           </div>
         </div>
 
