@@ -38,7 +38,7 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                 className="w-full flex justify-between items-center text-left px-6 py-4"
               >
                 <h3 className="text-lg font-semibold text-background-dark dark:text-background-light">
-                  {faq.title}
+                  {faq.question}
                 </h3>
                 <span
                   className={`material-symbols-outlined text-luxury-green dark:text-yellow-400 transition-transform ${
@@ -50,7 +50,7 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
               </button>
               {openFaq === index && (
                 <div className="px-6 pb-4 text-background-dark/80 dark:text-background-light/80">
-                  <p>{faq.description}</p>
+                  <p>{faq.answer}</p>
                 </div>
               )}
             </div>

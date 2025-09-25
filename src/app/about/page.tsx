@@ -7,6 +7,14 @@ import { FAQ, SEO } from "@/types";
 import FAQSection from "../components/FAQSection";
 
 interface AboutPageData {
+  HeroAbout: HeroAbout;
+  WhatWeDo: WhatWeDo;
+  WhoWeServe: WhoWeServe;
+  FAQ: FAQ[];
+  SEO: SEO;
+}
+
+interface HeroAbout {
   title: string;
   subtitle: string;
   background: {
@@ -14,17 +22,39 @@ interface AboutPageData {
     caption: string | null;
     url: string;
   };
-  FAQ: FAQ[];
-  SEO: SEO;
+}
+
+interface WhatWeDo {
+  title: string;
+  subtitle: string;
+  WhatWeDoItem: WhatWeDoItem[];
+}
+
+interface WhatWeDoItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface WhoWeServe {
+  title: string;
+  subtitle: string;
+  WhoWeServeItem: WhoWeServeItem[];
+}
+
+interface WhoWeServeItem {
+  icon: string;
+  title: string;
+  description: string;
 }
 
 interface AboutPageResponse {
   data: AboutPageData;
 }
 
-async function getAboutPageData(): Promise<AboutPageData> {
+async function getAboutPageData(): Promise<AboutPageData | null> {
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/about-page?populate=*`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/about-page?populate[HeroAbout][populate]=*&populate[WhatWeDo][populate]=*&populate[WhoWeServe][populate]=*&populate[FAQ]=*&populate[SEO]=*`;
     const response = await fetch(url, {
       cache: "no-store",
     });
@@ -38,22 +68,7 @@ async function getAboutPageData(): Promise<AboutPageData> {
   } catch (error) {
     console.error("Error fetching about page data:", error);
     // Return fallback data in case of error
-    return {
-      title: "About PerkPal",
-      subtitle:
-        "Empowering independent professionals with exclusive perks and community",
-      background: {
-        alternativeText: "About PerkPal",
-        caption: null,
-        url: "/placeholder-about.jpg",
-      },
-      FAQ: [],
-      SEO: {
-        meta_title: "About PerkPal",
-        meta_description:
-          "Empowering independent professionals with exclusive perks and community",
-      },
-    };
+    return null;
   }
 }
 
@@ -63,8 +78,10 @@ export async function generateMetadata(): Promise<Metadata> {
     const aboutPageData = await getAboutPageData();
 
     return {
-      title: aboutPageData.SEO.meta_title,
-      description: aboutPageData.SEO.meta_description,
+      title: aboutPageData?.SEO.meta_title || "About PerkPal",
+      description:
+        aboutPageData?.SEO.meta_description ||
+        "Empowering independent professionals with exclusive perks and community",
     };
   } catch (error) {
     console.error("Error generating metadata for about page:", error);
@@ -80,22 +97,32 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AboutPage() {
   const aboutPageData = await getAboutPageData();
 
+  if (!aboutPageData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-background-dark/60 dark:text-background-light/60">
+          Unable to load page data. Please try again later.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Hero Section */}
       <section
         className="relative h-[50vh] bg-cover bg-center text-white"
         style={{
-          backgroundImage: `url('${process.env.NEXT_PUBLIC_APP_URL}${aboutPageData.background.url}')`,
+          backgroundImage: `url('${process.env.NEXT_PUBLIC_APP_URL}${aboutPageData.HeroAbout.background.url}')`,
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            {aboutPageData.title}
+            {aboutPageData.HeroAbout.title}
           </h1>
           <p className="mt-4 max-w-2xl text-lg md:text-xl text-white/90">
-            {aboutPageData.subtitle}
+            {aboutPageData.HeroAbout.subtitle}
           </p>
         </div>
       </section>
@@ -105,57 +132,32 @@ export default async function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-background-dark dark:text-background-light">
-              What We Do
+              {aboutPageData.WhatWeDo.title}
             </h2>
             <p className="mt-4 text-lg text-background-dark/80 dark:text-background-light/80 max-w-3xl mx-auto">
-              PerkPal is your unfair advantage. We curate exclusive deals and
-              build a supportive community to help you thrive in your
-              independent career.
+              {aboutPageData.WhatWeDo.subtitle}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col items-center p-6 bg-perk-pink dark:bg-pink-900/30 rounded-xl shadow-md">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400">
-                <span className="material-symbols-outlined text-4xl text-luxury-green">
-                  military_tech
-                </span>
+            {aboutPageData.WhatWeDo.WhatWeDoItem.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center p-6 bg-perk-pink dark:bg-pink-900/30 rounded-xl shadow-md"
+              >
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400">
+                  <div
+                    className="*:size-6 text-luxury-green"
+                    dangerouslySetInnerHTML={{ __html: item.icon }}
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-background-dark dark:text-background-light mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-background-dark/80 dark:text-background-light/80">
+                  {item.description}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-background-dark dark:text-background-light mb-2">
-                Exclusive Perks
-              </h3>
-              <p className="text-background-dark/80 dark:text-background-light/80">
-                Access unbeatable discounts on software, co-working spaces,
-                lifestyle brands, and more, handpicked for your needs.
-              </p>
-            </div>
-            <div className="flex flex-col items-center p-6 bg-perk-yellow dark:bg-yellow-400/20 rounded-xl shadow-md">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400">
-                <span className="material-symbols-outlined text-4xl text-luxury-green">
-                  groups
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-background-dark dark:text-background-light mb-2">
-                Community &amp; Events
-              </h3>
-              <p className="text-background-dark/80 dark:text-background-light/80">
-                Connect with fellow entrepreneurs, share knowledge, and grow
-                your network through our exclusive events and online platform.
-              </p>
-            </div>
-            <div className="flex flex-col items-center p-6 bg-perk-purple dark:bg-purple-900/30 rounded-xl shadow-md">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400">
-                <span className="material-symbols-outlined text-4xl text-luxury-green">
-                  lightbulb
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-background-dark dark:text-background-light mb-2">
-                Valuable Resources
-              </h3>
-              <p className="text-background-dark/80 dark:text-background-light/80">
-                Gain insights from industry experts, access helpful guides, and
-                get the support you need to navigate your journey.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -165,55 +167,29 @@ export default async function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-background-dark dark:text-background-light">
-              Who We Serve
+              {aboutPageData.WhoWeServe.title}
             </h2>
             <p className="mt-4 text-lg text-background-dark/80 dark:text-background-light/80 max-w-3xl mx-auto">
-              We cater to the ambitious and the self-driven in Malaysia and
-              Singapore. Our platform is built for:
+              {aboutPageData.WhoWeServe.subtitle}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col items-center p-6">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400">
-                <span className="material-symbols-outlined text-4xl text-luxury-green">
-                  rocket_launch
-                </span>
+            {aboutPageData.WhoWeServe.WhoWeServeItem.map((item, index) => (
+              <div key={index} className="flex flex-col items-center p-6">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400">
+                  <div
+                    className="*:size-6 text-luxury-green"
+                    dangerouslySetInnerHTML={{ __html: item.icon }}
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-background-dark dark:text-background-light">
+                  {item.title}
+                </h4>
+                <p className="mt-2 text-background-dark/80 dark:text-background-light/80">
+                  {item.description}
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-background-dark dark:text-background-light">
-                Founders &amp; Startups
-              </h4>
-              <p className="mt-2 text-background-dark/80 dark:text-background-light/80">
-                Get the resources you need to scale your business without
-                breaking the bank.
-              </p>
-            </div>
-            <div className="flex flex-col items-center p-6">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400">
-                <span className="material-symbols-outlined text-4xl text-luxury-green">
-                  brush
-                </span>
-              </div>
-              <h4 className="text-xl font-bold text-background-dark dark:text-background-light">
-                Freelancers &amp; Solopreneurs
-              </h4>
-              <p className="mt-2 text-background-dark/80 dark:text-background-light/80">
-                Access perks that are usually reserved for large corporations.
-              </p>
-            </div>
-            <div className="flex flex-col items-center p-6">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-400">
-                <span className="material-symbols-outlined text-4xl text-luxury-green">
-                  wifi
-                </span>
-              </div>
-              <h4 className="text-xl font-bold text-background-dark dark:text-background-light">
-                Remote Workers
-              </h4>
-              <p className="mt-2 text-background-dark/80 dark:text-background-light/80">
-                Enhance your work-from-anywhere lifestyle with our curated
-                benefits.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>

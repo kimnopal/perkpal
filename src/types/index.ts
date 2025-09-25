@@ -71,7 +71,6 @@ export interface Perk {
   long_description: string;
   logo: PerkLogo;
   redemption_method: string;
-  redemption_value: string;
   valid_from: string;
   valid_to: string;
   featured: boolean;
@@ -98,8 +97,8 @@ export interface Category {
 }
 
 export interface FAQ {
-  title: string;
-  description: string;
+  question: string;
+  answer: string;
 }
 
 export interface SEO {
