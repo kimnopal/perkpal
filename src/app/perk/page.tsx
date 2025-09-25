@@ -71,6 +71,7 @@ export default function PerkPage() {
   const [error, setError] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [activeSubCategory, setActiveSubCategory] = useState<string>("all");
+  const [activeLocation, setActiveLocation] = useState<string>("global");
 
   const fetchPerks = async (
     categorySlug?: string,
@@ -166,6 +167,10 @@ export default function PerkPage() {
     setActiveSubCategory(subCategorySlug);
   };
 
+  const handleLocationClick = (location: string) => {
+    setActiveLocation(location);
+  };
+
   return (
     <div className="max-w-7xl mx-auto py-12">
       <div className="text-center mb-8">
@@ -177,7 +182,7 @@ export default function PerkPage() {
           Malaysia &amp; Singapore.
         </p>
       </div>
-      <div className="flex justify-center mb-8">
+      {/* <div className="flex justify-center mb-8">
         <div className="flex items-center gap-4 border-b-2 border-background-dark/10 dark:border-background-light/10 pb-4">
           {loading ? (
             <div className="flex items-center gap-4">
@@ -217,23 +222,60 @@ export default function PerkPage() {
             </>
           )}
         </div>
+      </div> */}
+      {/* Main Category Filters */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold text-background-dark dark:text-background-light mb-4">
+          Categories
+        </h3>
+        <div className="flex flex-wrap gap-3">
+          {!loading && !error && (
+            <>
+              <button
+                onClick={() => handleCategoryClick("all")}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  activeCategory === "all"
+                    ? "bg-yellow-400 text-background-dark shadow-md"
+                    : "bg-white dark:bg-white text-background-dark hover:bg-yellow-100 shadow-sm"
+                }`}
+              >
+                All Categories
+              </button>
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => handleCategoryClick(category.slug)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    activeCategory === category.slug
+                      ? "bg-yellow-400 text-background-dark shadow-md"
+                      : "bg-white dark:bg-white text-background-dark hover:bg-yellow-100 shadow-sm"
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </>
+          )}
+        </div>
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-4 mb-10 px-4 py-4 rounded-xl bg-background-dark/5 dark:bg-background-light/5">
-        <span className="font-semibold mr-4">Filters:</span>
-        {!loading && !error && (
-          <>
+
+      {/* Sub Category Filters - Only show when a main category is selected */}
+      {!loading && !error && activeCategory !== "all" && (
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-background-dark dark:text-background-light mb-4">
+            Sub Categories
+          </h3>
+          <div className="flex flex-wrap gap-3">
             <button
-              key={`filter-sub-all`}
               onClick={() => handleSubCategoryClick("all")}
-              className={`px-3 py-1.5 rounded-full shadow-sm transition-colors text-xs font-medium border ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeSubCategory === "all"
-                  ? "bg-primary/20 border-primary text-primary"
-                  : "bg-background-light dark:bg-background-dark border-background-dark/20 dark:border-background-light/20 hover:border-primary/30"
+                  ? "bg-yellow-400 text-background-dark shadow-md"
+                  : "bg-white dark:bg-white text-background-dark hover:bg-yellow-100 shadow-sm"
               }`}
             >
               All Sub Categories
             </button>
-            {/* Sub Categories */}
             {categories
               .filter(
                 (category) =>
@@ -246,31 +288,66 @@ export default function PerkPage() {
                 <button
                   key={`filter-sub-${subCategory.id}`}
                   onClick={() => handleSubCategoryClick(subCategory.slug)}
-                  className={`px-3 py-1.5 rounded-full shadow-sm transition-colors text-xs font-medium border ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     activeSubCategory === subCategory.slug
-                      ? "bg-primary/20 border-primary"
-                      : "bg-background-light dark:bg-background-dark border-background-dark/20 dark:border-background-light/20 hover:border-primary/30"
+                      ? "bg-yellow-400 text-background-dark shadow-md"
+                      : "bg-white dark:bg-white text-background-dark hover:bg-yellow-100 shadow-sm"
                   }`}
                 >
                   {subCategory.name}
                 </button>
               ))}
-            <div className="w-px h-6 bg-background-dark/20 dark:bg-background-light/20 mx-2"></div>
-          </>
-        )}
+          </div>
+        </div>
+      )}
 
-        <button className="px-4 py-2 rounded-full bg-background-light dark:bg-background-dark shadow-sm hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors text-sm font-medium">
-          All Locations
-        </button>
-        <button className="px-4 py-2 rounded-full bg-background-light dark:bg-background-dark shadow-sm hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors text-sm font-medium">
-          Malaysia
-        </button>
-        <button className="px-4 py-2 rounded-full bg-background-light dark:bg-background-dark shadow-sm hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors text-sm font-medium">
-          Singapore
-        </button>
-        <button className="px-4 py-2 rounded-full bg-primary text-background-dark shadow-sm hover:bg-primary/90 transition-colors text-sm font-medium">
-          Global
-        </button>
+      {/* Location Filters */}
+      <div className="mb-10">
+        <h3 className="text-lg font-semibold text-background-dark dark:text-background-light mb-4">
+          Location
+        </h3>
+        <div className="flex flex-wrap gap-3">
+          <button
+            onClick={() => handleLocationClick("global")}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              activeLocation === "global"
+                ? "bg-yellow-400 text-background-dark shadow-md"
+                : "bg-white dark:bg-white text-background-dark hover:bg-yellow-100 shadow-sm"
+            }`}
+          >
+            Global
+          </button>
+          <button
+            onClick={() => handleLocationClick("all")}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              activeLocation === "all"
+                ? "bg-yellow-400 text-background-dark shadow-md"
+                : "bg-white dark:bg-white text-background-dark hover:bg-yellow-100 shadow-sm"
+            }`}
+          >
+            All Locations
+          </button>
+          <button
+            onClick={() => handleLocationClick("malaysia")}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              activeLocation === "malaysia"
+                ? "bg-yellow-400 text-background-dark shadow-md"
+                : "bg-white dark:bg-white text-background-dark hover:bg-yellow-100 shadow-sm"
+            }`}
+          >
+            Malaysia
+          </button>
+          <button
+            onClick={() => handleLocationClick("singapore")}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              activeLocation === "singapore"
+                ? "bg-yellow-400 text-background-dark shadow-md"
+                : "bg-white dark:bg-white text-background-dark hover:bg-yellow-100 shadow-sm"
+            }`}
+          >
+            Singapore
+          </button>
+        </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* {perksLoading ? (
