@@ -1,7 +1,7 @@
 // At the top of your page.tsx file
 export const dynamic = "force-dynamic";
 
-import { FAQ, Link, SEO } from "@/types";
+import { CTAButton, FAQ, Link, SEO } from "@/types";
 import React from "react";
 import { Metadata } from "next";
 import PartnerFAQSection from "../components/PartnerFAQSection";
@@ -14,10 +14,7 @@ interface HeroPWU {
     caption: string | null;
     url: string;
   };
-  CTAButton: {
-    title: string;
-    link: Link;
-  };
+  CTAButton: CTAButton;
 }
 
 interface WhyPartnerWithUs {

@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 
 import { Metadata } from "next";
 import { Link, Perk, SEO, Journal } from "@/types";
+import Image from "next/image";
 
 // Hero Section
 interface Hero {
@@ -200,13 +201,13 @@ export default async function HomePage() {
             </p>
             <div className="flex flex-wrap justify-start gap-4 mt-4">
               <a
-                className="px-8 py-4 rounded-lg text-lg font-bold bg-primary text-background-dark hover:bg-opacity-90 transition-transform transform hover:scale-105"
+                className="md:px-8 md:py-4 px-4 py-2 rounded-lg md:text-lg text-base font-bold bg-primary text-background-dark hover:bg-opacity-90 transition-transform transform hover:scale-105"
                 href={data?.Hero.ButtonTop.link.href}
               >
                 {data?.Hero.ButtonTop.title}
               </a>
               <a
-                className="px-8 py-4 rounded-lg text-lg font-bold bg-forest-green text-white hover:bg-opacity-90 transition-transform transform hover:scale-105"
+                className="md:px-8 md:py-4 px-4 py-2 rounded-lg md:text-lg text-base font-bold bg-forest-green text-white hover:bg-opacity-90 transition-transform transform hover:scale-105"
                 href={data?.Hero.ButtonBottom.link.href}
               >
                 {data?.Hero.ButtonBottom.title}
@@ -214,11 +215,16 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="relative w-full max-w-lg mx-auto md:mx-0 justify-self-end">
-            <img
-              alt={data?.Hero.image.alternativeText || "Hero Image"}
-              className="rounded-full aspect-square object-cover"
-              src={`${process.env.NEXT_PUBLIC_APP_URL}${data?.Hero.image.url}`}
-            />
+            <div className="flex items-center gap-4 mb-4">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_APP_URL}${data?.Hero.image.url}`}
+                alt={data?.Hero.image.alternativeText ?? "Hero Image"}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-[500px] h-auto rounded-full aspect-square object-cover"
+              />
+            </div>
             {data?.Hero.HeroCard && data?.Hero.HeroCard.length > 0 && (
               <>
                 <div className="absolute top-0 -left-10 transform -translate-x-1/4 -translate-y-1/4 animate-float">

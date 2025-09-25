@@ -110,8 +110,18 @@ export interface Link {
   href: string;
 }
 
+export interface CTAButton {
+  title: string;
+  link: Link;
+}
+
 export interface Navbar {
+  Logo: {
+    logo: Image
+    link: Link
+  }
   NavItem: NavItem[];
+  CTAButton: CTAButton;
 }
 
 export interface NavItem {

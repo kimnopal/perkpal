@@ -328,7 +328,7 @@ export default function PerkPage() {
                     </span>
                   )}
                 </div>
-                <button className="w-full rounded-lg bg-primary text-background-dark font-bold py-2.5 px-4 hover:bg-primary/90 transition-colors">
+                <button className="w-full cursor-pointer rounded-lg bg-primary text-background-dark font-bold py-2.5 px-4 hover:bg-primary/90 transition-colors">
                   {perk.redemption_method === "coupon_code"
                     ? "Get Code"
                     : perk.redemption_method === "affiliate_link"

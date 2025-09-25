@@ -1,3 +1,5 @@
+// "use client";
+
 export const dynamic = "force-dynamic";
 
 import { SEO } from "@/types";
@@ -78,7 +80,56 @@ export default async function ContactPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white dark:bg-background-dark/80 p-8 rounded-xl shadow-lg border border-black/5 dark:border-white/5 backdrop-blur-sm">
-            <form className="space-y-6">
+            <form
+              className="space-y-6"
+              //               onSubmit={(e) => {
+              //                 e.preventDefault();
+              //                 const formData = new FormData(e.target as HTMLFormElement);
+              //                 const name = formData.get("name") as string;
+              //                 const email = formData.get("email") as string;
+              //                 const subject = formData.get("subject") as string;
+              //                 const message = formData.get("message") as string;
+
+              //                 // Create a neatly formatted email body
+              //                 const emailBody = `
+              // Hello PerkPal Team,
+
+              // You have received a new contact form submission:
+
+              // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+              // 📋 CONTACT DETAILS
+              // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+              // 👤 Name: ${name}
+              // 📧 Email: ${email}
+              // 📝 Subject: ${subject}
+
+              // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+              // 💬 MESSAGE
+              // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+              // ${message}
+
+              // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+              // This message was sent from the PerkPal contact form.
+              // Please respond to: ${email}
+
+              // Best regards,
+              // PerkPal Contact Form System
+              //                 `.trim();
+
+              //                 // Create mailto URL with proper encoding
+              //                 const mailtoUrl = `mailto:naufalhakim366@gmail.com?subject=${encodeURIComponent(
+              //                   `[PerkPal Contact] ${subject}`
+              //                 )}&body=${encodeURIComponent(emailBody)}`;
+
+              //                 // Open the email client
+              //                 window.location.href = mailtoUrl;
+              //               }}
+            >
               <div>
                 <label
                   className="block text-sm font-medium text-text-light dark:text-text-dark mb-1"
@@ -92,6 +143,7 @@ export default async function ContactPage() {
                   name="name"
                   placeholder="e.g., Jane Doe"
                   type="text"
+                  required
                 />
               </div>
               <div>
@@ -107,6 +159,7 @@ export default async function ContactPage() {
                   name="email"
                   placeholder="e.g., jane.doe@example.com"
                   type="email"
+                  required
                 />
               </div>
               <div>
@@ -122,6 +175,7 @@ export default async function ContactPage() {
                   name="subject"
                   placeholder="What can we help you with?"
                   type="text"
+                  required
                 />
               </div>
               <div>
@@ -137,6 +191,7 @@ export default async function ContactPage() {
                   name="message"
                   placeholder="Your message here..."
                   rows={5}
+                  required
                 ></textarea>
               </div>
               <div className="flex justify-end">
