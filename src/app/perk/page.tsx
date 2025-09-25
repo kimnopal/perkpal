@@ -33,6 +33,15 @@ interface PerksResponse {
   };
 }
 
+interface PerkPageData {
+  show_redemption_method: string;
+  email: string;
+}
+
+interface PerkPageResponse {
+  data: PerkPageData;
+}
+
 // async function getPerksPageData(): Promise<PerksResponse> {
 //   const url = `${process.env.NEXT_PUBLIC_API_URL}/perks?populate=*`;
 
@@ -72,6 +81,50 @@ export default function PerkPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [activeSubCategory, setActiveSubCategory] = useState<string>("all");
   const [activeLocation, setActiveLocation] = useState<string>("global");
+  const [showPerkPageData, setShowPerkPageData] = useState<PerkPageData | null>(
+    null
+  );
+  const [pageDataLoading, setPageDataLoading] = useState(true);
+
+  // Lead form popup state
+  const [showLeadForm, setShowLeadForm] = useState(false);
+  const [selectedPerk, setSelectedPerk] = useState<Perk | null>(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+  const [formLoading, setFormLoading] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+
+  // Fetch perk page data to get show_redemption_method setting
+  const fetchPerkPageData = async () => {
+    try {
+      setPageDataLoading(true);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/perk-page?populate=*`,
+        {
+          cache: "no-store",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data: PerkPageResponse = await response.json();
+
+      if (data.data && data.data.show_redemption_method) {
+        setShowPerkPageData(data.data);
+      }
+    } catch (err) {
+      console.error("Error fetching perk page data:", err);
+      // Continue with default behavior if this fails
+    } finally {
+      setPageDataLoading(false);
+    }
+  };
 
   const fetchPerks = async (
     categorySlug?: string,
@@ -89,6 +142,15 @@ export default function PerkPage() {
       // Add sub-category filter if not "all"
       if (subCategorySlug && subCategorySlug !== "all") {
         url += `&filters[sub_category][slug][$eq]=${subCategorySlug}`;
+      }
+
+      // Add show_redemption_method filter if available and not "all"
+      // This filter controls which perks are shown based on the page configuration
+      if (
+        showPerkPageData?.show_redemption_method &&
+        showPerkPageData.show_redemption_method !== "all"
+      ) {
+        url += `&filters[redemption_method][$eq]=${showPerkPageData.show_redemption_method}`;
       }
 
       const response = await fetch(url, {
@@ -149,13 +211,27 @@ export default function PerkPage() {
       }
     };
 
-    fetchCategories();
-    fetchPerks(); // Fetch all perks initially
+    // Initialize data fetching
+    const initializeData = async () => {
+      await fetchPerkPageData(); // Fetch page data first to get show_redemption_method
+      fetchCategories();
+    };
+
+    initializeData();
   }, []);
+
+  // Fetch perks when showRedemptionMethod is loaded
+  useEffect(() => {
+    if (!pageDataLoading) {
+      fetchPerks(activeCategory, activeSubCategory);
+    }
+  }, [pageDataLoading, showPerkPageData]);
 
   // Fetch perks when category or sub-category changes
   useEffect(() => {
-    fetchPerks(activeCategory, activeSubCategory);
+    if (!pageDataLoading) {
+      fetchPerks(activeCategory, activeSubCategory);
+    }
   }, [activeCategory, activeSubCategory]);
 
   const handleCategoryClick = (categorySlug: string) => {
@@ -169,6 +245,79 @@ export default function PerkPage() {
 
   const handleLocationClick = (location: string) => {
     setActiveLocation(location);
+  };
+
+  // Lead form handlers
+  const handlePerkClick = (perk: Perk) => {
+    if (perk.redemption_method === "lead_form") {
+      setSelectedPerk(perk);
+      setShowLeadForm(true);
+      setFormSuccess(false);
+      setFormError(null);
+    }
+  };
+
+  const handleCloseLeadForm = () => {
+    setShowLeadForm(false);
+    setSelectedPerk(null);
+    setFormData({ name: "", email: "", phone: "" });
+    setFormSuccess(false);
+    setFormError(null);
+  };
+
+  const handleFormChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validation
+    if (!formData.name.trim() || !formData.email.trim()) {
+      setFormError("Name and email are required");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setFormError("Please enter a valid email address");
+      return;
+    }
+
+    try {
+      setFormLoading(true);
+      setFormError(null);
+
+      // Create mailto URL with form data
+      const subject = encodeURIComponent(
+        `PerkPal Lead Form: ${selectedPerk?.title}`
+      );
+      const body = encodeURIComponent(
+        `New lead for: ${selectedPerk?.title}
+
+Name: ${formData.name.trim()}
+Email: ${formData.email.trim()}
+Phone: ${formData.phone.trim() || "Not provided"}
+
+Perk: ${selectedPerk?.title}
+Slug: ${selectedPerk?.slug}`
+      );
+
+      // Replace with your desired recipient email
+      const recipient = "naufalhakim366@gmail.com"; // Change this to your actual email
+      const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+      // Open email client
+      window.location.href = mailtoUrl;
+
+      setFormSuccess(true);
+      setTimeout(() => {
+        handleCloseLeadForm();
+      }, 2000);
+    } catch (err) {
+      setFormError("Failed to open email client. Please try again.");
+    } finally {
+      setFormLoading(false);
+    }
   };
 
   return (
@@ -405,11 +554,16 @@ export default function PerkPage() {
                     </span>
                   )}
                 </div>
-                <button className="w-full cursor-pointer rounded-lg bg-primary text-background-dark font-bold py-2.5 px-4 hover:bg-primary/90 transition-colors">
+                <button
+                  onClick={() => handlePerkClick(perk)}
+                  className="w-full cursor-pointer rounded-lg bg-primary text-background-dark font-bold py-2.5 px-4 hover:bg-primary/90 transition-colors"
+                >
                   {perk.redemption_method === "coupon_code"
                     ? "Get Code"
                     : perk.redemption_method === "affiliate_link"
                     ? "Claim Perk"
+                    : perk.redemption_method === "lead_form"
+                    ? "Get This Perk"
                     : "Apply Now"}
                 </button>
               </div>
@@ -428,6 +582,152 @@ export default function PerkPage() {
           </div>
         )}
       </div>
+
+      {/* Lead Form Modal */}
+      {showLeadForm && selectedPerk && (
+        <div className="fixed inset-0 bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    Get Access to {selectedPerk.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Fill out the form below to receive this perk
+                  </p>
+                </div>
+                <button
+                  onClick={handleCloseLeadForm}
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {formSuccess ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg
+                      className="w-8 h-8 text-green-600 dark:text-green-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    Form Submitted Successfully!
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    We'll be in touch soon with your perk details.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  {formError && (
+                    <div className="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg text-sm">
+                      {formError}
+                    </div>
+                  )}
+
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => handleFormChange("name", e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        handleFormChange("email", e.target.value)
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      Phone Number (Optional)
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        handleFormChange("phone", e.target.value)
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                  </div>
+
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={handleCloseLeadForm}
+                      className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={formLoading}
+                      className="cursor-pointer flex-1 px-4 py-2 bg-primary text-background-dark rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {formLoading ? "Submitting..." : "Submit"}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
