@@ -303,7 +303,7 @@ Slug: ${selectedPerk?.slug}`
       );
 
       // Replace with your desired recipient email
-      const recipient = "naufalhakim366@gmail.com"; // Change this to your actual email
+      const recipient = showPerkPageData?.email || "hello@venturenext.io"; // Change this to your actual email
       const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
 
       // Open email client
