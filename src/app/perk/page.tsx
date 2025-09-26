@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Category, SubCategory, Perk } from "../../types";
 import { Metadata } from "next";
+import Image from "next/image";
 
 // export const metadata: Metadata = {
 //   title: "Perks",
@@ -504,24 +505,6 @@ export default function PerkPage() {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* {perksLoading ? (
-          // Loading skeleton
-          [...Array(6)].map((_, index) => (
-            <div
-              key={index}
-              className="bg-background-light dark:bg-background-dark rounded-xl shadow-lg animate-pulse"
-            >
-              <div className="h-48 bg-background-dark/10 dark:bg-background-light/10 rounded-t-xl"></div>
-              <div className="p-6">
-                <div className="h-6 bg-background-dark/10 dark:bg-background-light/10 rounded mb-2"></div>
-                <div className="h-4 bg-background-dark/10 dark:bg-background-light/10 rounded mb-2"></div>
-                <div className="h-4 bg-background-dark/10 dark:bg-background-light/10 rounded mb-4 w-3/4"></div>
-                <div className="h-10 bg-background-dark/10 dark:bg-background-light/10 rounded"></div>
-              </div>
-            </div>
-          ))
-        ) : */}
-
         {perks.length > 0 ? (
           perks.map((perk, index) => (
             <div
@@ -541,6 +524,24 @@ export default function PerkPage() {
                     </span>
                   </div>
                 )}
+                <div className="absolute bottom-4 left-4 flex items-center gap-3">
+                  <div className="size-12 rounded-full bg-white p-1">
+                    <Image
+                      src={process.env.NEXT_PUBLIC_APP_URL + perk.banner.url}
+                      alt={perk?.banner?.alternativeText ?? "Perk Image"}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className="w-12 h-auto rounded-full"
+                    />
+                  </div>
+                  <span
+                    className="text-white font-semibold text-lg drop-shadow-md"
+                    style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
+                  >
+                    {perk.vendor_name}
+                  </span>
+                </div>
               </div>
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold mb-2 line-clamp-2">

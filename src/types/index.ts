@@ -67,14 +67,15 @@ export interface PerkImage {
 export interface Perk {
   title: string;
   slug: string;
+  banner: Image;
   short_description: string;
   long_description: string;
+  vendor_name: string;
   logo: PerkLogo;
   redemption_method: string;
   valid_from: string;
   valid_to: string;
   featured: boolean;
-  og_image: PerkImage;
 }
 
 export interface SubCategory {
@@ -117,9 +118,9 @@ export interface CTAButton {
 
 export interface Navbar {
   Logo: {
-    logo: Image
-    link: Link
-  }
+    logo: Image;
+    link: Link;
+  };
   NavItem: NavItem[];
   CTAButton: CTAButton;
 }
@@ -203,7 +204,7 @@ export interface Journal {
   title: string;
   slug: string;
   date: string;
-  preface: string
+  preface: string;
   content: string;
   excerpt: string;
   createdAt: string;
