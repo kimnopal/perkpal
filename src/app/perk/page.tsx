@@ -269,7 +269,7 @@ export default function PerkPage() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validation
@@ -287,34 +287,39 @@ export default function PerkPage() {
       setFormLoading(true);
       setFormError(null);
 
-      // Create mailto URL with form data
-      const subject = encodeURIComponent(
-        `PerkPal Lead Form: ${selectedPerk?.title}`
-      );
-      const body = encodeURIComponent(
-        `New lead for: ${selectedPerk?.title}
+      // Send email via API route
+      const response = await fetch("/api/send-lead-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          perkTitle: selectedPerk?.title,
+          perkSlug: selectedPerk?.slug,
+          recipientEmail: showPerkPageData?.email || "hello@venturenext.io",
+        }),
+      });
 
-Name: ${formData.name.trim()}
-Email: ${formData.email.trim()}
-Phone: ${formData.phone.trim() || "Not provided"}
+      const result = await response.json();
 
-Perk: ${selectedPerk?.title}
-Slug: ${selectedPerk?.slug}`
-      );
-
-      // Replace with your desired recipient email
-      const recipient = showPerkPageData?.email || "hello@venturenext.io"; // Change this to your actual email
-      const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
-
-      // Open email client
-      window.location.href = mailtoUrl;
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send email");
+      }
 
       setFormSuccess(true);
       setTimeout(() => {
         handleCloseLeadForm();
       }, 2000);
     } catch (err) {
-      setFormError("Failed to open email client. Please try again.");
+      console.error("Email sending error:", err);
+      setFormError(
+        err instanceof Error
+          ? err.message
+          : "Failed to send email. Please try again."
+      );
     } finally {
       setFormLoading(false);
     }
