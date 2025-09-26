@@ -191,7 +191,7 @@ export default async function HomePage() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-[60vh] md:min-h-[85vh] flex items-center bg-background-light dark:bg-background-dark text-background-dark dark:text-background-light border-b border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-6 py-20 grid lg:grid-cols-2 lg:gap-12 gap-24 items-center">
           <div className="text-left flex flex-col items-start gap-6 md:pr-10">
             <h1 className="text-4xl md:text-6xl font-black tracking-tighter max-w-xl">
               {data?.Hero.title}
@@ -214,7 +214,7 @@ export default async function HomePage() {
               </a>
             </div>
           </div>
-          <div className="relative w-full max-w-lg mx-auto md:mx-0 justify-self-end">
+          <div className="relative md:w-full w-[200px] max-w-lg mx-auto md:mx-0 justify-self-center">
             <div className="flex items-center gap-4 mb-4">
               <Image
                 src={`${process.env.NEXT_PUBLIC_APP_URL}${data?.Hero.image.url}`}
@@ -222,13 +222,13 @@ export default async function HomePage() {
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="w-[500px] h-auto rounded-full aspect-square object-cover"
+                className="w-full h-auto rounded-full aspect-square object-cover"
               />
             </div>
-            {data?.Hero.HeroCard && data?.Hero.HeroCard.length > 0 && (
+            {data?.Hero.HeroCard && data?.Hero.HeroCard.length === 4 && (
               <>
-                <div className="absolute top-0 -left-10 transform -translate-x-1/4 -translate-y-1/4 animate-float">
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+                <div className="absolute top-0 -left-10 transform -translate-x-1/4 md:-translate-y-1/4 animate-float">
+                  <div className="bg-white dark:bg-gray-800 md:p-4 p-2 rounded-xl shadow-lg">
                     <p className="font-bold text-sm">
                       {data?.Hero.HeroCard[0]?.title}
                     </p>
@@ -238,8 +238,8 @@ export default async function HomePage() {
                   </div>
                 </div>
                 {data?.Hero.HeroCard[1] && (
-                  <div className="absolute top-10 right-0 transform translate-x-1/4 -translate-y-1/2 animate-float animation-delay-1000">
-                    <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+                  <div className="absolute top-10 right-14 transform translate-x-full md:translate-x-1/4 -translate-y-1/2 animate-float animation-delay-1000">
+                    <div className="bg-white dark:bg-gray-800 md:p-4 p-2 rounded-xl shadow-lg">
                       <p className="font-bold text-sm">
                         {data?.Hero.HeroCard[1].title}
                       </p>
@@ -250,8 +250,8 @@ export default async function HomePage() {
                   </div>
                 )}
                 {data?.Hero.HeroCard[2] && (
-                  <div className="absolute bottom-20 -right-12 transform translate-x-1/2 translate-y-1/2 animate-float animation-delay-2000">
-                    <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+                  <div className="absolute bottom-20 md:right-16 right-0 transform translate-x-1/2 md:translate-y-1/2 translate-y-full animate-float animation-delay-2000">
+                    <div className="bg-white dark:bg-gray-800 md:p-4 p-2 rounded-xl shadow-lg">
                       <p className="font-bold text-sm">
                         {data?.Hero.HeroCard[2].title}
                       </p>
@@ -262,8 +262,8 @@ export default async function HomePage() {
                   </div>
                 )}
                 {data?.Hero.HeroCard[3] && (
-                  <div className="absolute bottom-5 left-0 transform -translate-x-1/2 translate-y-1/4 animate-float animation-delay-3000">
-                    <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+                  <div className="absolute bottom-5 left-0 transform -translate-x-1/3 md:-translate-x-1/2 translate-y-1/2 md:translate-y-1/4 animate-float animation-delay-3000">
+                    <div className="bg-white dark:bg-gray-800 md:p-4 p-2 rounded-xl shadow-lg">
                       <p className="font-bold text-sm">
                         {data?.Hero.HeroCard[3].title}
                       </p>
